@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+
+from sys import stderr
+from parsing import parsing
+from run_crypto import run_crypto
+
+def main():
+    parse = parsing()
+
+    output = run_crypto(parse[0], parse[1], parse[2], parse[3])
+
+    if output != 0:
+        print(output, end='')
+
+try:
+    main()
+except:
+    exit(84)

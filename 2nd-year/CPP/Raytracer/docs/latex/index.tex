@@ -1,0 +1,44 @@
+\chapter{Raytracer}
+\hypertarget{index}{}\label{index}\index{Raytracer@{Raytracer}}
+\label{index_md__2home_2nahimkandari_2Documents_2delivery_2B-OOP-400-STG-4-1-raytracer-nahim_8kandari_2README}%
+\Hypertarget{index_md__2home_2nahimkandari_2Documents_2delivery_2B-OOP-400-STG-4-1-raytracer-nahim_8kandari_2README}%
+ dependencies \+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo\ apt\ install\ libconfig++-\/dev}
+\DoxyCodeLine{./build.sh}
+\DoxyCodeLine{raytracer\ scenes/scene.cfg}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md0}{}\doxysubsection{\texorpdfstring{Plugins Integration \+:}{Plugins Integration \+:}}\label{index_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Create a new file named with your features name. Add the following code according to your pluggin. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{\ \ \ \ std::string\ getType()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Sphere"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::unique\_ptr<Raytracer::Sphere>\ createPrimitive(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&center,\ \textcolor{keywordtype}{double}\ radius,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::shared\_ptr<Raytracer::IMaterial>\ material)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<Raytracer::Sphere>(center,\ radius,\ material);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+build from poor \+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Create\ exec\ :}
+\DoxyCodeLine{cd\ refacto/refacto/oneweek/\ ;\ \ g++\ main.cpp\ Maths/*.cpp\ Parser/*.cpp\ Primitives/*.cpp\ Camera/*.cpp\ Textures/*.cpp\ LibHandler/*.cpp\ Ray.cpp\ Scene.cpp\ -\/lconfig++\ ;\ cd\ ../../..\ ;\ mv\ refacto/refacto/oneweek/a.out\ .}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Create\ Plugin\ for\ Plane\ :}
+\DoxyCodeLine{g++\ -\/fPIC\ -\/shared\ -\/o\ planee.so\ \ plugins/Plane.cpp\ Primitives/Plane.cpp\ Ray.cpp\ Textures/*.cpp\ Maths/*.cpp\ Scene.cpp\ Camera/*.cpp}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Create\ Plugin\ for\ Sphere\ :}
+\DoxyCodeLine{g++\ -\/fPIC\ -\/shared\ -\/o\ sphere.so\ \ plugins/Sphere.cpp\ Primitives/Sphere.cpp\ Ray.cpp\ Textures/*.cpp\ Maths/*.cpp\ Scene.cpp\ Camera/*.cpp}
+
+\end{DoxyCode}
+ 

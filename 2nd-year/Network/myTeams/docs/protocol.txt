@@ -1,0 +1,51 @@
+200;Connected to server;
+201;Disconnected from server;
+
+250;user logged;
+300;user logged out;
+
+370;user infos sent;
+
+400;Unknown command;
+401;Wrong number of arguments;
+402;Wrong argument;
+403;Error:user unhautorized;
+
+500;message sent;
+501;message received;
+502;conversation sent;
+
+600;user subscribed to the team;
+650;unsubscribe from team;
+
+701;user not found;
+702;team not found;
+703;channel not found;
+704;thread not found;
+705;Already exist;
+
+800;team selected;
+801;channel selected;
+802;thread selected;
+803;nothing selected;
+
+947;Team created;
+948;Channel created;
+949;Thread created;
+950;Comment created;
+951;Team created event;
+952;Channel created event;
+953;Thread created event;
+954;Reply created event;
+
+995;users list sent;
+997;Teams list sent;
+998;Channels list sent;
+999;Threads list sent;
+1000;Comments list sent;
+
+1050;Team infos sent;
+1051;Channel infos sent;
+1052;Thread infos sent;
+
+

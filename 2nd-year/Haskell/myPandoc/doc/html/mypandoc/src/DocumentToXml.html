@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">{-
+-- EPITECH PROJECT, 2024
+-- B-FUN-400-STG-4-1-mypandoc-noe.tritsch
+-- File description:
+-- DocumentToXml
+-}</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">DocumentToXml</span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-9"></span><span>    </span><span class="annot"><a href="DocumentToXml.html#documentToXml"><span class="hs-identifier">documentToXml</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-10"></span><span>    </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier">Document</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-11"></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Document.html"><span class="hs-identifier">Document</span></a></span><span>
+</span><span id="line-14"></span><span>    </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier">Document</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-15"></span><span>    </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier">Header</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-16"></span><span>    </span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier">Content</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-17"></span><span>    </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier">FormattingElement</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Indent.html"><span class="hs-identifier">Indent</span></a></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="annot"><a href="DocumentToXml.html#textToXml"><span class="hs-identifier hs-type">textToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-22"></span><span id="textToXml"><span class="annot"><span class="annottext">textToXml :: String -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#textToXml"><span class="hs-identifier hs-var hs-var">textToXml</span></a></span></span><span> </span><span id="local-6989586621679040628"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040628"><span class="hs-identifier hs-var">str</span></a></span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040628"><span class="hs-identifier hs-var">str</span></a></span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="annot"><a href="DocumentToXml.html#formattingToXml"><span class="hs-identifier hs-type">formattingToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier hs-type">FormattingElement</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-25"></span><span id="formattingToXml"><span class="annot"><span class="annottext">formattingToXml :: FormattingElement -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#formattingToXml"><span class="hs-identifier hs-var hs-var">formattingToXml</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Italic"><span class="hs-identifier hs-type">Italic</span></a></span><span> </span><span id="local-6989586621679040625"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040625"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;italic&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040625"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-26"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/italic&gt;&quot;</span></span><span>
+</span><span id="line-27"></span><span class="annot"><a href="DocumentToXml.html#formattingToXml"><span class="hs-identifier hs-var">formattingToXml</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Bold"><span class="hs-identifier hs-type">Bold</span></a></span><span> </span><span id="local-6989586621679040622"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040622"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;bold&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040622"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/bold&gt;&quot;</span></span><span>
+</span><span id="line-28"></span><span class="annot"><a href="DocumentToXml.html#formattingToXml"><span class="hs-identifier hs-var">formattingToXml</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Code"><span class="hs-identifier hs-type">Code</span></a></span><span> </span><span id="local-6989586621679040620"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040620"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;code&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040620"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/code&gt;&quot;</span></span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span class="annot"><a href="DocumentToXml.html#linkToXml"><span class="hs-identifier hs-type">linkToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-31"></span><span id="linkToXml"><span class="annot"><span class="annottext">linkToXml :: String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#linkToXml"><span class="hs-identifier hs-var hs-var">linkToXml</span></a></span></span><span> </span><span id="local-6989586621679040618"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040618"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040617"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040617"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040616"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040616"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-32"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;link url=\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040618"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-33"></span><span>    </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-var">contentsToXmlArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040617"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040616"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/link&gt;&quot;</span></span><span>
+</span><span id="line-34"></span><span>
+</span><span id="line-35"></span><span class="annot"><a href="DocumentToXml.html#imageToXml"><span class="hs-identifier hs-type">imageToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-36"></span><span id="imageToXml"><span class="annot"><span class="annottext">imageToXml :: String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#imageToXml"><span class="hs-identifier hs-var hs-var">imageToXml</span></a></span></span><span> </span><span id="local-6989586621679040612"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040612"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040611"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040611"><span class="hs-identifier hs-var">alt</span></a></span></span><span> </span><span id="local-6989586621679040610"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040610"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;image url=\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040612"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-38"></span><span>    </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-var">contentsToXmlArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040611"><span class="hs-identifier hs-var">alt</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040610"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/image&gt;&quot;</span></span><span>
+</span><span id="line-39"></span><span>
+</span><span id="line-40"></span><span class="annot"><a href="DocumentToXml.html#paragraphToXml"><span class="hs-identifier hs-type">paragraphToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-41"></span><span id="paragraphToXml"><span class="annot"><span class="annottext">paragraphToXml :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#paragraphToXml"><span class="hs-identifier hs-var hs-var">paragraphToXml</span></a></span></span><span> </span><span id="local-6989586621679040608"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040608"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040607"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040607"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040607"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;paragraph&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-42"></span><span>    </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-var">contentsToXmlArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040608"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040607"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/paragraph&gt;\n&quot;</span></span><span>
+</span><span id="line-43"></span><span>
+</span><span id="line-44"></span><span class="annot"><a href="DocumentToXml.html#sectionToXml"><span class="hs-identifier hs-type">sectionToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-45"></span><span id="sectionToXml"><span class="annot"><span class="annottext">sectionToXml :: Maybe String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#sectionToXml"><span class="hs-identifier hs-var hs-var">sectionToXml</span></a></span></span><span> </span><span id="local-6989586621679040604"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040604"><span class="hs-identifier hs-var">titleStr</span></a></span></span><span> </span><span id="local-6989586621679040603"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040603"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040602"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040602"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-46"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040602"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;section &quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040601"><span class="hs-identifier hs-var">finalTitleStr</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&gt;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-47"></span><span>    </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-var">contentsToXmlArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040603"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040602"><span class="hs-identifier hs-var">level</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-48"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040602"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/section&gt;\n&quot;</span></span><span>
+</span><span id="line-49"></span><span>      </span><span class="hs-keyword">where</span><span>
+</span><span id="line-50"></span><span>        </span><span id="local-6989586621679040601"><span class="annot"><span class="annottext">finalTitleStr :: String
+</span><a href="#local-6989586621679040601"><span class="hs-identifier hs-var hs-var">finalTitleStr</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040604"><span class="hs-identifier hs-var">titleStr</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-51"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621679040600"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040600"><span class="hs-identifier hs-var">titleBeacon</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;title=\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040600"><span class="hs-identifier hs-var">titleBeacon</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&quot;</span></span><span>
+</span><span id="line-52"></span><span>          </span><span class="annot"><span class="annottext">Maybe String
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-53"></span><span>
+</span><span id="line-54"></span><span class="annot"><a href="DocumentToXml.html#codeBlockToXml"><span class="hs-identifier hs-type">codeBlockToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-55"></span><span id="codeBlockToXml"><span class="annot"><span class="annottext">codeBlockToXml :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#codeBlockToXml"><span class="hs-identifier hs-var hs-var">codeBlockToXml</span></a></span></span><span> </span><span id="local-6989586621679040598"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040598"><span class="hs-identifier hs-var">codeLines</span></a></span></span><span> </span><span id="local-6989586621679040597"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040597"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-56"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040597"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;codeblock&gt;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-57"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentConverter"><span class="hs-operator hs-var">`contentConverter`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040597"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040598"><span class="hs-identifier hs-var">codeLines</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-58"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040597"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/codeblock&gt;\n&quot;</span></span><span>
+</span><span id="line-59"></span><span>
+</span><span id="line-60"></span><span class="annot"><a href="DocumentToXml.html#listToXml"><span class="hs-identifier hs-type">listToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-61"></span><span id="listToXml"><span class="annot"><span class="annottext">listToXml :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#listToXml"><span class="hs-identifier hs-var hs-var">listToXml</span></a></span></span><span> </span><span id="local-6989586621679040593"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040593"><span class="hs-identifier hs-var">items</span></a></span></span><span> </span><span id="local-6989586621679040592"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040592"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-62"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040592"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;list&gt;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-63"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentConverter"><span class="hs-operator hs-var">`contentConverter`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040592"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040593"><span class="hs-identifier hs-var">items</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-64"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040592"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/list&gt;\n&quot;</span></span><span>
+</span><span id="line-65"></span><span>
+</span><span id="line-66"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-type">contentConverter</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-67"></span><span id="contentConverter"><span class="annot"><span class="annottext">contentConverter :: Content -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var hs-var">contentConverter</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Text"><span class="hs-identifier hs-type">Text</span></a></span><span> </span><span id="local-6989586621679040590"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040590"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040589"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040589"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#textToXml"><span class="hs-identifier hs-var">textToXml</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040590"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040589"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-68"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Formatting"><span class="hs-identifier hs-type">Formatting</span></a></span><span> </span><span id="local-6989586621679040587"><span class="annot"><span class="annottext">FormattingElement
+</span><a href="#local-6989586621679040587"><span class="hs-identifier hs-var">format</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040586"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040586"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FormattingElement -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#formattingToXml"><span class="hs-identifier hs-var">formattingToXml</span></a></span><span> </span><span class="annot"><span class="annottext">FormattingElement
+</span><a href="#local-6989586621679040587"><span class="hs-identifier hs-var">format</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040586"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-69"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Link"><span class="hs-identifier hs-type">Link</span></a></span><span> </span><span id="local-6989586621679040584"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040584"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040583"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040583"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040582"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040582"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#linkToXml"><span class="hs-identifier hs-var">linkToXml</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040584"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040583"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040582"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-70"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Image"><span class="hs-identifier hs-type">Image</span></a></span><span> </span><span id="local-6989586621679040580"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040580"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040579"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040579"><span class="hs-identifier hs-var">alt</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040578"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040578"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#imageToXml"><span class="hs-identifier hs-var">imageToXml</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040580"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040579"><span class="hs-identifier hs-var">alt</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040578"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-71"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Paragraph"><span class="hs-identifier hs-type">Paragraph</span></a></span><span> </span><span id="local-6989586621679040576"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040576"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040575"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040575"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#paragraphToXml"><span class="hs-identifier hs-var">paragraphToXml</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040576"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040575"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-72"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Section"><span class="hs-identifier hs-type">Section</span></a></span><span> </span><span id="local-6989586621679040573"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040573"><span class="hs-identifier hs-var">t</span></a></span></span><span> </span><span id="local-6989586621679040572"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040572"><span class="hs-identifier hs-var">c</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040571"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040571"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#sectionToXml"><span class="hs-identifier hs-var">sectionToXml</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040573"><span class="hs-identifier hs-var">t</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040572"><span class="hs-identifier hs-var">c</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040571"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-73"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#CodeBlock"><span class="hs-identifier hs-type">CodeBlock</span></a></span><span> </span><span id="local-6989586621679040569"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040569"><span class="hs-identifier hs-var">codeLines</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040568"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040568"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#codeBlockToXml"><span class="hs-identifier hs-var">codeBlockToXml</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040569"><span class="hs-identifier hs-var">codeLines</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040568"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-74"></span><span class="annot"><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#List"><span class="hs-identifier hs-type">List</span></a></span><span> </span><span id="local-6989586621679040566"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040566"><span class="hs-identifier hs-var">items</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040565"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040565"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#listToXml"><span class="hs-identifier hs-var">listToXml</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040566"><span class="hs-identifier hs-var">items</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040565"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-75"></span><span>
+</span><span id="line-76"></span><span class="hs-comment">-- (if indentedStart then addIndent level &quot;[\n&quot; else &quot;[\n&quot;)</span><span>
+</span><span id="line-77"></span><span class="annot"><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-type">contentsToXmlArray</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-78"></span><span id="contentsToXmlArray"><span class="annot"><span class="annottext">contentsToXmlArray :: [Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentsToXmlArray"><span class="hs-identifier hs-var hs-var">contentsToXmlArray</span></a></span></span><span> </span><span id="local-6989586621679040564"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040564"><span class="hs-identifier hs-var">contents</span></a></span></span><span> </span><span id="local-6989586621679040563"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679040563"><span class="hs-identifier hs-var">indentedStart</span></a></span></span><span> </span><span id="local-6989586621679040562"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040562"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-79"></span><span>    </span><span class="hs-special">(</span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679040563"><span class="hs-identifier hs-var">indentedStart</span></a></span><span> </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040562"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-80"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentConverter"><span class="hs-operator hs-var">`contentConverter`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040562"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040564"><span class="hs-identifier hs-var">contents</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-81"></span><span>
+</span><span id="line-82"></span><span class="annot"><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-type">commaSeparated</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-83"></span><span id="commaSeparated"><span class="annot"><span class="annottext">commaSeparated :: [String] -&gt; String
+</span><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var hs-var">commaSeparated</span></a></span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-84"></span><span class="annot"><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">[</span><span id="local-6989586621679040561"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040561"><span class="hs-identifier hs-var">x</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040561"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><span id="line-85"></span><span class="annot"><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040560"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040560"><span class="hs-identifier hs-var">x</span></a></span></span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span id="local-6989586621679040559"><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679040559"><span class="hs-identifier hs-var">xs</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040560"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToXml.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679040559"><span class="hs-identifier hs-var">xs</span></a></span><span>
+</span><span id="line-86"></span><span>
+</span><span id="line-87"></span><span class="annot"><a href="DocumentToXml.html#appendContent"><span class="hs-identifier hs-type">appendContent</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-88"></span><span id="appendContent"><span class="annot"><span class="annottext">appendContent :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#appendContent"><span class="hs-identifier hs-var hs-var">appendContent</span></a></span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-89"></span><span class="annot"><a href="DocumentToXml.html#appendContent"><span class="hs-identifier hs-var">appendContent</span></a></span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040557"><span class="annot"><span class="annottext">Content
+</span><a href="#local-6989586621679040557"><span class="hs-identifier hs-var">c</span></a></span></span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span id="local-6989586621679040556"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040556"><span class="hs-identifier hs-var">cs</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040555"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040555"><span class="hs-identifier hs-var">l</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#contentConverter"><span class="hs-identifier hs-var">contentConverter</span></a></span><span> </span><span class="annot"><span class="annottext">Content
+</span><a href="#local-6989586621679040557"><span class="hs-identifier hs-var">c</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040555"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#appendContent"><span class="hs-identifier hs-var">appendContent</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040556"><span class="hs-identifier hs-var">cs</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040555"><span class="hs-identifier hs-var">l</span></a></span><span>
+</span><span id="line-90"></span><span>
+</span><span id="line-91"></span><span class="annot"><a href="DocumentToXml.html#displayBody"><span class="hs-identifier hs-type">displayBody</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-92"></span><span id="displayBody"><span class="annot"><span class="annottext">displayBody :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#displayBody"><span class="hs-identifier hs-var hs-var">displayBody</span></a></span></span><span> </span><span id="local-6989586621679040553"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040553"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040552"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040552"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-93"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;body&gt;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-94"></span><span>    </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#appendContent"><span class="hs-identifier hs-var">appendContent</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040553"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040552"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-95"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/body&gt;\n&quot;</span></span><span>
+</span><span id="line-96"></span><span>
+</span><span id="line-97"></span><span class="annot"><a href="DocumentToXml.html#displayHeader"><span class="hs-identifier hs-type">displayHeader</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-98"></span><span id="displayHeader"><span class="annot"><span class="annottext">displayHeader :: Header -&gt; String
+</span><a href="DocumentToXml.html#displayHeader"><span class="hs-identifier hs-var hs-var">displayHeader</span></a></span></span><span> </span><span id="local-6989586621679040550"><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040550"><span class="hs-identifier hs-var">header</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;header title=\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Header -&gt; String
+</span><a href="Document.html#title"><span class="hs-identifier hs-var">title</span></a></span><span> </span><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040550"><span class="hs-identifier hs-var">header</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-99"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040548"><span class="hs-identifier hs-var">authorStr</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040547"><span class="hs-identifier hs-var">dateStr</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/header&gt;\n&quot;</span></span><span>
+</span><span id="line-100"></span><span>      </span><span class="hs-keyword">where</span><span>
+</span><span id="line-101"></span><span>        </span><span id="local-6989586621679040548"><span class="annot"><span class="annottext">authorStr :: String
+</span><a href="#local-6989586621679040548"><span class="hs-identifier hs-var hs-var">authorStr</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Header -&gt; Maybe String
+</span><a href="Document.html#author"><span class="hs-identifier hs-var">author</span></a></span><span> </span><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040550"><span class="hs-identifier hs-var">header</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-102"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621679040545"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040545"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;author&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040545"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/author&gt;&quot;</span></span><span>
+</span><span id="line-103"></span><span>          </span><span class="annot"><span class="annottext">Maybe String
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-104"></span><span>        </span><span id="local-6989586621679040547"><span class="annot"><span class="annottext">dateStr :: String
+</span><a href="#local-6989586621679040547"><span class="hs-identifier hs-var hs-var">dateStr</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Header -&gt; Maybe String
+</span><a href="Document.html#date"><span class="hs-identifier hs-var">date</span></a></span><span> </span><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040550"><span class="hs-identifier hs-var">header</span></a></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-105"></span><span>          </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621679040543"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040543"><span class="hs-identifier hs-var">d</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;date&gt;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040543"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/date&gt;&quot;</span></span><span>
+</span><span id="line-106"></span><span>          </span><span class="annot"><span class="annottext">Maybe String
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-107"></span><span>
+</span><span id="line-108"></span><span class="annot"><a href="DocumentToXml.html#documentToXml"><span class="hs-identifier hs-type">documentToXml</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-type">Document</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-109"></span><span id="documentToXml"><span class="annot"><span class="annottext">documentToXml :: Document -&gt; String
+</span><a href="DocumentToXml.html#documentToXml"><span class="hs-identifier hs-var hs-var">documentToXml</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-type">Document</span></a></span><span> </span><span id="local-6989586621679040541"><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040541"><span class="hs-identifier hs-var">header</span></a></span></span><span> </span><span id="local-6989586621679040540"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040540"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;document&gt;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-110"></span><span>    </span><span class="annot"><span class="annottext">Header -&gt; String
+</span><a href="DocumentToXml.html#displayHeader"><span class="hs-identifier hs-var">displayHeader</span></a></span><span> </span><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040541"><span class="hs-identifier hs-var">header</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToXml.html#displayBody"><span class="hs-identifier hs-var">displayBody</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040540"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&lt;/document&gt;&quot;</span></span><span>
+</span><span id="line-111"></span></pre></body></html>

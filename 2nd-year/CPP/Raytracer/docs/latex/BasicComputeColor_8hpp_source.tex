@@ -1,0 +1,34 @@
+\doxysection{Basic\+Compute\+Color.\+hpp}
+\hypertarget{BasicComputeColor_8hpp_source}{}\label{BasicComputeColor_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Decorator/BasicComputeColor.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Decorator/BasicComputeColor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2024}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ BasicComputeColor}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ BASICCOMPUTECOLOR\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BASICCOMPUTECOLOR\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}IComputeColor.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1BasicComputeColor}{BasicComputeColor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1IComputeColor}{IComputeColor}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ computeColor(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}}\ \&ray,\ \textcolor{keywordtype}{int}\ depth,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}}\ \&world,\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ background)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)world;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)depth;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)background;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ tmp\ =\ ray.getDirection();}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ direction\ =\ tmp.normalizeVec(tmp);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a\ =\ (direction.Y\ +\ 1.0)\ *\ 0.5;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}(1.0,\ 1.0,\ 1.0)\ *\ (1.0\ -\/\ a)\ +\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}(0.5,\ 0.7,\ 1.0)\ *\ a;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !BASICCOMPUTECOLOR\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

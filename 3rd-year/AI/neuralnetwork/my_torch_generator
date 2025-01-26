@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+from generator_src.parsing import parsing
+from generator_src.save_data import save
+import numpy as np
+import json
+
+parse = parsing()
+
+for filepath, number in parse:
+    with open(filepath, 'r') as file:
+        content = json.load(file)
+        input_size = content["input_size"]
+        hidden_size = content["hidden_size"]
+        output_size = content["output_size"]
+        for i in range(number):
+            save(0.1,
+                 np.random.uniform(-1, 1, (input_size, hidden_size)).tolist(),
+                 np.random.uniform(-1, 1, (hidden_size, output_size)).tolist(),
+                 np.random.uniform(-1, 1, hidden_size).tolist(),
+                 np.random.uniform(-1, 1, output_size).tolist(),
+                 filepath,
+                 filepath.split(".")[0] + f"_{i + 1}.nn")

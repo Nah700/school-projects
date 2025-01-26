@@ -1,0 +1,50 @@
+\doxysection{Camera.\+hpp}
+\hypertarget{Camera_8hpp_source}{}\label{Camera_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Camera/Camera.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Camera/Camera.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2024}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Camera}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CAMERA\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../Textures/Materials.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../Scene.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../Decorator/BasicComputeColor.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../Decorator/MaterialComputeColor.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../Decorator/BackgroundDecorator.hpp"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Camera}{Camera}}(\textcolor{keywordtype}{int}\ imageWidth,\ \textcolor{keywordtype}{int}\ samplesPerPixel,\ \textcolor{keywordtype}{double}\ fov,\ std::pair<Math::Point3d,\ Math::Point3d>\ lookFromAt,\ \textcolor{keywordtype}{double}\ defocus,\ \textcolor{keywordtype}{double}\ focus,\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ background\ =\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}(-\/1,\ -\/1,\ -\/1));}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Camera}{\string~Camera}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ render(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}}\ \&world);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}}\ getRay(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ sampleSquare()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ defocusDiskSample()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ std::tuple<int,\ int,\ int>\ convertModalToColor(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&color);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ getSampleColor(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}}\ \&scene);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<int,\ int>\ \_imageRes;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \_center,\ \_pixelCenter,\ \_background;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_pixelSamplesScale,\ vfov,\ \_defocusAngle,\ \_focusDist;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<Math::Vector3d,\ Math::Vector3d>\ \_pixelDelta,\ \_defocusDisk;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_ratio\ =\ 16.0\ /\ 9.0;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_samplesPerPixel;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_maxDepth\ =\ 50;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ std::pair<Math::Point3d,\ Math::Point3d>\ \_lookFromAt;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ vup\ =\ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}(0,1,0);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<IComputeColor>\ \_decorator;}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !CAMERA\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

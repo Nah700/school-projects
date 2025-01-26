@@ -1,0 +1,54 @@
+\doxysection{Raytracer\+::Cylinder Class Reference}
+\hypertarget{classRaytracer_1_1Cylinder}{}\label{classRaytracer_1_1Cylinder}\index{Raytracer::Cylinder@{Raytracer::Cylinder}}
+Inheritance diagram for Raytracer\+::Cylinder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1Cylinder}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Cylinder_aaed85d2e34db82bc4daff508d058b95a}\label{classRaytracer_1_1Cylinder_aaed85d2e34db82bc4daff508d058b95a} 
+{\bfseries Cylinder} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&center, double radius, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material)
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1Cylinder_a6327a1d25bc11f4ddba39a047da6810e}{hits}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&material) const
+\item 
+\Hypertarget{classRaytracer_1_1Cylinder_a40c11fb274b638edeca839c7a5d1f0db}\label{classRaytracer_1_1Cylinder_a40c11fb274b638edeca839c7a5d1f0db} 
+double {\bfseries get\+Height} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88}{get\+Origin}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \mbox{\hyperlink{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e}{get\+Material}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c}{set\+Origin}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&origin) override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries hits} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}} $>$ \&material) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1Cylinder_a6327a1d25bc11f4ddba39a047da6810e}\index{Raytracer::Cylinder@{Raytracer::Cylinder}!hits@{hits}}
+\index{hits@{hits}!Raytracer::Cylinder@{Raytracer::Cylinder}}
+\doxysubsubsection{\texorpdfstring{hits()}{hits()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1Cylinder_a6327a1d25bc11f4ddba39a047da6810e} 
+bool Raytracer\+::\+Cylinder\+::hits (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&}]{ray}{, }\item[{std\+::pair$<$ double, double $>$}]{bornes}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&}]{ray\+Color}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&}]{material}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Cylinder.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Cylinder.\+cpp\end{DoxyCompactItemize}

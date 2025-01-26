@@ -1,0 +1,32 @@
+\doxysection{Plane.\+hpp}
+\hypertarget{Plane_8hpp_source}{}\label{Plane_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Primitives/Plane.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Primitives/Plane.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2024}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ plane}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ PLANE\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#define\ PLANE\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}APrimitive.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1Plane}{Plane}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1APrimitive}{APrimitive}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Plane}{Plane}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&center,\ \textcolor{keywordtype}{double}\ length,\ std::shared\_ptr<IMaterial>\ mat);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Plane}{\string~Plane}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hits(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}}\ \&ray,\ std::pair<double,\ double>\ bornes,\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,\ std::shared\_ptr<IMaterial>\ \&materials)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ u,\ v,\ w,\ \_normal;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_distance;}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !PLANE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

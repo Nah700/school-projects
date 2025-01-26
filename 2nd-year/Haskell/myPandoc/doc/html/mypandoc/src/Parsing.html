@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">{-
+-- EPITECH PROJECT, 2024
+-- B-FUN-400-STG-4-1-mypandoc-noe.tritsch
+-- File description:
+-- Parsing
+-}</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Parsing</span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-9"></span><span>    </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier">MyOptions</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-10"></span><span>    </span><span class="annot"><a href="Parsing.html#getArgsOpt"><span class="hs-identifier">getArgsOpt</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-11"></span><span>    </span><span class="annot"><a href="Parsing.html#readMyFile"><span class="hs-identifier">readMyFile</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-12"></span><span>    </span><span class="hs-keyword">module</span><span> </span><span class="annot"><span class="hs-identifier">System.Exit</span></span><span>
+</span><span id="line-13"></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Options.Applicative</span></span><span>
+</span><span id="line-16"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Control.Exception</span></span><span>
+</span><span id="line-17"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.Exit</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">exitWith</span></span><span class="hs-special">,</span><span> </span><span class="annot"><span class="hs-identifier">ExitCode</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">ExitFailure</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">System.IO.Error</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier">catchIOError</span></span><span class="hs-special">)</span><span>
+</span><span id="line-19"></span><span>
+</span><span id="line-20"></span><span class="hs-keyword">data</span><span> </span><span id="MyOptions"><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-var">MyOptions</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="MyOptions"><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-var">MyOptions</span></a></span></span><span> </span><span class="hs-special">{</span><span>
+</span><span id="line-21"></span><span>    </span><span id="_ifile"><span class="annot"><span class="annottext">MyOptions -&gt; FilePath
+</span><a href="Parsing.html#_ifile"><span class="hs-identifier hs-var hs-var">_ifile</span></a></span></span><span class="hs-glyph">::</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span>
+</span><span id="line-22"></span><span>    </span><span id="_oformat"><span class="annot"><span class="annottext">MyOptions -&gt; FilePath
+</span><a href="Parsing.html#_oformat"><span class="hs-identifier hs-var hs-var">_oformat</span></a></span></span><span class="hs-glyph">::</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">,</span><span>
+</span><span id="line-23"></span><span>    </span><span id="_ofile"><span class="annot"><span class="annottext">MyOptions -&gt; FilePath
+</span><a href="Parsing.html#_ofile"><span class="hs-identifier hs-var hs-var">_ofile</span></a></span></span><span class="hs-glyph">::</span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span class="hs-special">,</span><span>
+</span><span id="line-24"></span><span>    </span><span id="_iformat"><span class="annot"><span class="annottext">MyOptions -&gt; FilePath
+</span><a href="Parsing.html#_iformat"><span class="hs-identifier hs-var hs-var">_iformat</span></a></span></span><span class="hs-glyph">::</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-25"></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679041420"><span id="local-6989586621679041422"><span id="local-6989586621679041432"><span class="annot"><span class="annottext">Int -&gt; MyOptions -&gt; ShowS
+[MyOptions] -&gt; ShowS
+MyOptions -&gt; FilePath
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; FilePath) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [MyOptions] -&gt; ShowS
+$cshowList :: [MyOptions] -&gt; ShowS
+show :: MyOptions -&gt; FilePath
+$cshow :: MyOptions -&gt; FilePath
+showsPrec :: Int -&gt; MyOptions -&gt; ShowS
+$cshowsPrec :: Int -&gt; MyOptions -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-26"></span><span>
+</span><span id="line-27"></span><span class="annot"><a href="Parsing.html#myOptionsParser"><span class="hs-identifier hs-type">myOptionsParser</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-type">MyOptions</span></a></span><span>
+</span><span id="line-28"></span><span id="myOptionsParser"><span class="annot"><span class="annottext">myOptionsParser :: Parser MyOptions
+</span><a href="Parsing.html#myOptionsParser"><span class="hs-identifier hs-var hs-var">myOptionsParser</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; FilePath -&gt; FilePath -&gt; FilePath -&gt; MyOptions
+</span><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-var">MyOptions</span></a></span><span>
+</span><span id="line-29"></span><span>    </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a b. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;$&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ReadM a -&gt; Mod OptionFields a -&gt; Parser a
+</span><span class="hs-identifier hs-var">option</span></span><span> </span><span class="annot"><span class="annottext">forall s. IsString s =&gt; ReadM s
+</span><span class="hs-identifier hs-var">str</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; Char -&gt; Mod f a
+</span><span class="hs-identifier hs-var">short</span></span><span> </span><span class="annot"><span class="annottext">Char
+</span><span class="hs-char">'i'</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">long</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;ifile&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasMetavar f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">metavar</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;FilePath&quot;</span></span><span>
+</span><span id="line-30"></span><span>        </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">help</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;path to the file to convert&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-31"></span><span>    </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ReadM a -&gt; Mod OptionFields a -&gt; Parser a
+</span><span class="hs-identifier hs-var">option</span></span><span> </span><span class="annot"><span class="annottext">forall s. IsString s =&gt; ReadM s
+</span><span class="hs-identifier hs-var">str</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; Char -&gt; Mod f a
+</span><span class="hs-identifier hs-var">short</span></span><span> </span><span class="annot"><span class="annottext">Char
+</span><span class="hs-char">'f'</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">long</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;oformat&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasMetavar f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">metavar</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;String&quot;</span></span><span>
+</span><span id="line-32"></span><span>        </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">help</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;output format (xml, json, markdown)&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-33"></span><span>    </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ReadM a -&gt; Mod OptionFields a -&gt; Parser a
+</span><span class="hs-identifier hs-var">option</span></span><span> </span><span class="annot"><span class="annottext">forall s. IsString s =&gt; ReadM s
+</span><span class="hs-identifier hs-var">str</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; Char -&gt; Mod f a
+</span><span class="hs-identifier hs-var">short</span></span><span> </span><span class="annot"><span class="annottext">Char
+</span><span class="hs-char">'o'</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">long</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;ofile&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasMetavar f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">metavar</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;FilePath&quot;</span></span><span>
+</span><span id="line-34"></span><span>        </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">help</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;path to the output file&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasValue f =&gt; a -&gt; Mod f a
+</span><span class="hs-identifier hs-var">value</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;NULL&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-35"></span><span>    </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a b. Applicative f =&gt; f (a -&gt; b) -&gt; f a -&gt; f b
+</span><span class="hs-operator hs-var">&lt;*&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ReadM a -&gt; Mod OptionFields a -&gt; Parser a
+</span><span class="hs-identifier hs-var">option</span></span><span> </span><span class="annot"><span class="annottext">forall s. IsString s =&gt; ReadM s
+</span><span class="hs-identifier hs-var">str</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; Char -&gt; Mod f a
+</span><span class="hs-identifier hs-var">short</span></span><span> </span><span class="annot"><span class="annottext">Char
+</span><span class="hs-char">'e'</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasName f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">long</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;iformat&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasMetavar f =&gt; FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">metavar</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;String&quot;</span></span><span>
+</span><span id="line-36"></span><span>        </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. FilePath -&gt; Mod f a
+</span><span class="hs-identifier hs-var">help</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;input format (xml, json, markdown)&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a. HasValue f =&gt; a -&gt; Mod f a
+</span><span class="hs-identifier hs-var">value</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;any&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-37"></span><span>
+</span><span id="line-38"></span><span class="annot"><a href="Parsing.html#parser"><span class="hs-identifier hs-type">parser</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">ParserInfo</span></span><span> </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-type">MyOptions</span></a></span><span>
+</span><span id="line-39"></span><span id="parser"><span class="annot"><span class="annottext">parser :: ParserInfo MyOptions
+</span><a href="Parsing.html#parser"><span class="hs-identifier hs-var hs-var">parser</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">forall a. Parser a -&gt; InfoMod a -&gt; ParserInfo a
+</span><span class="hs-identifier hs-var">info</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Parser MyOptions
+</span><a href="Parsing.html#myOptionsParser"><span class="hs-identifier hs-var">myOptionsParser</span></a></span><span> </span><span class="annot"><span class="annottext">forall (f :: * -&gt; *) a b. Applicative f =&gt; f a -&gt; f (a -&gt; b) -&gt; f b
+</span><span class="hs-operator hs-var">&lt;**&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Parser (a -&gt; a)
+</span><span class="hs-identifier hs-var">helper</span></span><span class="hs-special">)</span><span>
+</span><span id="line-40"></span><span>  </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a. InfoMod a
+</span><span class="hs-identifier hs-var">fullDesc</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. FilePath -&gt; InfoMod a
+</span><span class="hs-identifier hs-var">progDesc</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;My Pandoc&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. Semigroup a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">&lt;&gt;</span></span><span>
+</span><span id="line-41"></span><span>   </span><span class="annot"><span class="annottext">forall a. FilePath -&gt; InfoMod a
+</span><span class="hs-identifier hs-var">header</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;Leo the boss.&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-42"></span><span>
+</span><span id="line-43"></span><span class="annot"><a href="Parsing.html#checkArgs"><span class="hs-identifier hs-type">checkArgs</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-type">MyOptions</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-type">MyOptions</span></a></span><span>
+</span><span id="line-44"></span><span id="checkArgs"><span class="annot"><span class="annottext">checkArgs :: MyOptions -&gt; Maybe MyOptions
+</span><a href="Parsing.html#checkArgs"><span class="hs-identifier hs-var hs-var">checkArgs</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">forall a. a -&gt; Maybe a
+</span><span class="hs-identifier hs-var">Just</span></span><span>
+</span><span id="line-45"></span><span>
+</span><span id="line-46"></span><span class="annot"><a href="Parsing.html#getArgsOpt"><span class="hs-identifier hs-type">getArgsOpt</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="annot"><a href="Parsing.html#MyOptions"><span class="hs-identifier hs-type">MyOptions</span></a></span><span>
+</span><span id="line-47"></span><span id="getArgsOpt"><span class="annot"><span class="annottext">getArgsOpt :: IO MyOptions
+</span><a href="Parsing.html#getArgsOpt"><span class="hs-identifier hs-var hs-var">getArgsOpt</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
+</span><span id="line-48"></span><span>    </span><span id="local-6989586621679041400"><span class="annot"><span class="annottext">MyOptions
+</span><a href="#local-6989586621679041400"><span class="hs-identifier hs-var">options</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">forall e a. Exception e =&gt; IO a -&gt; (e -&gt; IO a) -&gt; IO a
+</span><span class="hs-identifier hs-var">catch</span></span><span>
+</span><span id="line-49"></span><span>      </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a. ParserInfo a -&gt; IO a
+</span><span class="hs-identifier hs-var">execParser</span></span><span> </span><span class="annot"><span class="annottext">ParserInfo MyOptions
+</span><a href="Parsing.html#parser"><span class="hs-identifier hs-var">parser</span></a></span><span class="hs-special">)</span><span>
+</span><span id="line-50"></span><span>      </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">SomeException</span></span><span> </span><span class="annot"><span class="annottext">e
+</span><span class="hs-identifier">_</span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">forall a. ExitCode -&gt; IO a
+</span><span class="hs-identifier hs-var">exitWith</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; ExitCode
+</span><span class="hs-identifier hs-var">ExitFailure</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">84</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-51"></span><span>    </span><span class="hs-keyword">case</span><span> </span><span class="annot"><span class="annottext">MyOptions -&gt; Maybe MyOptions
+</span><a href="Parsing.html#checkArgs"><span class="hs-identifier hs-var">checkArgs</span></a></span><span> </span><span class="annot"><span class="annottext">MyOptions
+</span><a href="#local-6989586621679041400"><span class="hs-identifier hs-var">options</span></a></span><span> </span><span class="hs-keyword">of</span><span>
+</span><span id="line-52"></span><span>      </span><span class="annot"><span class="hs-identifier hs-type">Just</span></span><span> </span><span id="local-6989586621679041395"><span class="annot"><span class="annottext">MyOptions
+</span><a href="#local-6989586621679041395"><span class="hs-identifier hs-var">args</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">MyOptions
+</span><a href="#local-6989586621679041395"><span class="hs-identifier hs-var">args</span></a></span><span>
+</span><span id="line-53"></span><span>      </span><span class="annot"><span class="annottext">Maybe MyOptions
+</span><span class="hs-identifier hs-var">Nothing</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">forall a. ExitCode -&gt; IO a
+</span><span class="hs-identifier hs-var">exitWith</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; ExitCode
+</span><span class="hs-identifier hs-var">ExitFailure</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">84</span></span><span class="hs-special">)</span><span>
+</span><span id="line-54"></span><span>
+</span><span id="line-55"></span><span class="annot"><a href="Parsing.html#readMyFile"><span class="hs-identifier hs-type">readMyFile</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">FilePath</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">IO</span></span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">Char</span></span><span class="hs-special">]</span><span>
+</span><span id="line-56"></span><span id="readMyFile"><span class="annot"><span class="annottext">readMyFile :: FilePath -&gt; IO FilePath
+</span><a href="Parsing.html#readMyFile"><span class="hs-identifier hs-var hs-var">readMyFile</span></a></span></span><span> </span><span id="local-6989586621679041394"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621679041394"><span class="hs-identifier hs-var">filename</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">forall a. IO a -&gt; (IOError -&gt; IO a) -&gt; IO a
+</span><span class="hs-identifier hs-var">catchIOError</span></span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-57"></span><span>    </span><span class="hs-keyword">do</span><span>
+</span><span id="line-58"></span><span>        </span><span id="local-6989586621679041393"><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621679041393"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO FilePath
+</span><span class="hs-identifier hs-var">readFile</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621679041394"><span class="hs-identifier hs-var">filename</span></a></span><span>
+</span><span id="line-59"></span><span>        </span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">forall (t :: * -&gt; *) a. Foldable t =&gt; t a -&gt; Bool
+</span><span class="hs-identifier hs-var">null</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621679041393"><span class="hs-identifier hs-var">content</span></a></span><span>
+</span><span id="line-60"></span><span>            </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO ()
+</span><span class="hs-identifier hs-var">putStrLn</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;Empty File&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ExitCode -&gt; IO a
+</span><span class="hs-identifier hs-var">exitWith</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; ExitCode
+</span><span class="hs-identifier hs-var">ExitFailure</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">84</span></span><span class="hs-special">)</span><span>
+</span><span id="line-61"></span><span>            </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
+</span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><a href="#local-6989586621679041393"><span class="hs-identifier hs-var">content</span></a></span><span>
+</span><span id="line-62"></span><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span class="annot"><span class="annottext">IOError
+</span><span class="hs-identifier">_</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">FilePath -&gt; IO ()
+</span><span class="hs-identifier hs-var">putStrLn</span></span><span> </span><span class="annot"><span class="annottext">FilePath
+</span><span class="hs-string">&quot;File not found&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall (m :: * -&gt; *) a b. Monad m =&gt; m a -&gt; m b -&gt; m b
+</span><span class="hs-operator hs-var">&gt;&gt;</span></span><span> </span><span class="annot"><span class="annottext">forall a. ExitCode -&gt; IO a
+</span><span class="hs-identifier hs-var">exitWith</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int -&gt; ExitCode
+</span><span class="hs-identifier hs-var">ExitFailure</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">84</span></span><span class="hs-special">)</span><span class="hs-special">)</span></pre></body></html>

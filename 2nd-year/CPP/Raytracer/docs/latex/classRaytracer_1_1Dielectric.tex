@@ -1,0 +1,50 @@
+\doxysection{Raytracer\+::Dielectric Class Reference}
+\hypertarget{classRaytracer_1_1Dielectric}{}\label{classRaytracer_1_1Dielectric}\index{Raytracer::Dielectric@{Raytracer::Dielectric}}
+Inheritance diagram for Raytracer\+::Dielectric\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1Dielectric}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Dielectric_a1e24ec54875c13f69eedc22c869cd75b}\label{classRaytracer_1_1Dielectric_a1e24ec54875c13f69eedc22c869cd75b} 
+{\bfseries Dielectric} (double refraction\+Index)
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1Dielectric_a655f0a877b33ce377f0609b0b3f15e80}{scatter}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&attenuation, \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray\+Out) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1AMaterial}{Raytracer\+::\+AMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_a73ad5e3d42cac6d8e1792a6440693c3b}{get\+Albedo}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1AMaterial_abf369e044bd87232eb88e05940315653}{set\+Albedo}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&albedo)
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_ac75a73e2e2de73e6a7456abc96b0479e}{emitted}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Dielectric_a8579876053c7078cd4bf15fbed40c375}\label{classRaytracer_1_1Dielectric_a8579876053c7078cd4bf15fbed40c375} 
+static double {\bfseries reflectance} (double cosine, double refraction\+Index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1Dielectric_a655f0a877b33ce377f0609b0b3f15e80}\index{Raytracer::Dielectric@{Raytracer::Dielectric}!scatter@{scatter}}
+\index{scatter@{scatter}!Raytracer::Dielectric@{Raytracer::Dielectric}}
+\doxysubsubsection{\texorpdfstring{scatter()}{scatter()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1Dielectric_a655f0a877b33ce377f0609b0b3f15e80} 
+bool Raytracer\+::\+Dielectric\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray}{, }\item[{const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&}]{ray\+Color}{, }\item[{\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&}]{attenuation}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray\+Out}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classRaytracer_1_1AMaterial}{Raytracer\+::\+AMaterial}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Textures/Materials.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Textures/Dielectric.\+cpp\end{DoxyCompactItemize}

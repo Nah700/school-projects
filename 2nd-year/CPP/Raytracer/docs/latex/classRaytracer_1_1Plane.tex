@@ -1,0 +1,51 @@
+\doxysection{Raytracer\+::Plane Class Reference}
+\hypertarget{classRaytracer_1_1Plane}{}\label{classRaytracer_1_1Plane}\index{Raytracer::Plane@{Raytracer::Plane}}
+Inheritance diagram for Raytracer\+::Plane\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1Plane}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Plane_a82d71df7f43c65550ebda7af660527a7}\label{classRaytracer_1_1Plane_a82d71df7f43c65550ebda7af660527a7} 
+{\bfseries Plane} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&center, double length, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ mat)
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1Plane_a054c6e91a969be8eaed1858ad0947b18}{hits}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&materials) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88}{get\+Origin}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \mbox{\hyperlink{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e}{get\+Material}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c}{set\+Origin}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&origin) override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries hits} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}} $>$ \&material) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1Plane_a054c6e91a969be8eaed1858ad0947b18}\index{Raytracer::Plane@{Raytracer::Plane}!hits@{hits}}
+\index{hits@{hits}!Raytracer::Plane@{Raytracer::Plane}}
+\doxysubsubsection{\texorpdfstring{hits()}{hits()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1Plane_a054c6e91a969be8eaed1858ad0947b18} 
+bool Raytracer\+::\+Plane\+::hits (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&}]{ray}{, }\item[{std\+::pair$<$ double, double $>$}]{bornes}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&}]{ray\+Color}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&}]{materials}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Plane.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Plane.\+cpp\end{DoxyCompactItemize}

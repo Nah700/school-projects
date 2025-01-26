@@ -1,0 +1,57 @@
+\doxysection{Raytracer\+::Cone Class Reference}
+\hypertarget{classRaytracer_1_1Cone}{}\label{classRaytracer_1_1Cone}\index{Raytracer::Cone@{Raytracer::Cone}}
+Inheritance diagram for Raytracer\+::Cone\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1Cone}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Cone_abf1be6f2b1931c8a395a2202ce1692b1}\label{classRaytracer_1_1Cone_abf1be6f2b1931c8a395a2202ce1692b1} 
+{\bfseries Cone} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&center, double radius, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material)
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1Cone_a55094178011b5cb79662c07e4b40bb12}{hits}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&ray, std\+::pair$<$ double, double $>$ bounds, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&material) const
+\item 
+\Hypertarget{classRaytracer_1_1Cone_a34587820be226f6db81c4f0aacc1de99}\label{classRaytracer_1_1Cone_a34587820be226f6db81c4f0aacc1de99} 
+double {\bfseries get\+Height} () const
+\item 
+\Hypertarget{classRaytracer_1_1Cone_a4a25685d5d08a901cd4a03120b9b2de8}\label{classRaytracer_1_1Cone_a4a25685d5d08a901cd4a03120b9b2de8} 
+double {\bfseries get\+Radius} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88}{get\+Origin}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \mbox{\hyperlink{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e}{get\+Material}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c}{set\+Origin}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&origin) override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries hits} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}} $>$ \&material) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1Cone_a55094178011b5cb79662c07e4b40bb12}\index{Raytracer::Cone@{Raytracer::Cone}!hits@{hits}}
+\index{hits@{hits}!Raytracer::Cone@{Raytracer::Cone}}
+\doxysubsubsection{\texorpdfstring{hits()}{hits()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1Cone_a55094178011b5cb79662c07e4b40bb12} 
+bool Raytracer\+::\+Cone\+::hits (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&}]{ray}{, }\item[{std\+::pair$<$ double, double $>$}]{bounds}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1RayColor}{Ray\+Color}} \&}]{ray\+Color}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&}]{material}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1APrimitive}{Raytracer\+::\+APrimitive}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Cone.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/Cone.\+cpp\end{DoxyCompactItemize}

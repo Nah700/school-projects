@@ -1,0 +1,26 @@
+\doxysection{Raytracer\+::Scene Class Reference}
+\hypertarget{classRaytracer_1_1Scene}{}\label{classRaytracer_1_1Scene}\index{Raytracer::Scene@{Raytracer::Scene}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Scene_a42909263de1f8b0937ce1245f8c60904}\label{classRaytracer_1_1Scene_a42909263de1f8b0937ce1245f8c60904} 
+{\bfseries Scene} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{IPrimitive}} $>$ object)
+\item 
+\Hypertarget{classRaytracer_1_1Scene_a0ad3c186c19f4a85e893b7a9ca0b0215}\label{classRaytracer_1_1Scene_a0ad3c186c19f4a85e893b7a9ca0b0215} 
+void {\bfseries add\+Primitive} (std\+::function$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{IPrimitive}} $>$()$>$ func)
+\item 
+\Hypertarget{classRaytracer_1_1Scene_ae1065e6c96da85dce3581060c4ae864a}\label{classRaytracer_1_1Scene_ae1065e6c96da85dce3581060c4ae864a} 
+void {\bfseries clear} ()
+\item 
+\Hypertarget{classRaytracer_1_1Scene_ade02f84de89d054269df62cf88852e22}\label{classRaytracer_1_1Scene_ade02f84de89d054269df62cf88852e22} 
+bool {\bfseries hit} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&material) const
+\item 
+\Hypertarget{classRaytracer_1_1Scene_a604931880fb8b70ff9f0d1e3e93a389f}\label{classRaytracer_1_1Scene_a604931880fb8b70ff9f0d1e3e93a389f} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{IPrimitive}} $>$ $>$ \& {\bfseries get\+Objects} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/Scene.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/Scene.\+cpp\end{DoxyCompactItemize}

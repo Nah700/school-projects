@@ -1,0 +1,44 @@
+\doxysection{Material\+Compute\+Color.\+hpp}
+\hypertarget{MaterialComputeColor_8hpp_source}{}\label{MaterialComputeColor_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Decorator/MaterialComputeColor.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Decorator/MaterialComputeColor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2024}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ MaterialComputeColor}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MATERIALCOMPUTECOLOR\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MATERIALCOMPUTECOLOR\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}IComputeColor.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1MaterialComputeColor}{MaterialComputeColor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1IComputeColor}{IComputeColor}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1MaterialComputeColor}{MaterialComputeColor}}(std::shared\_ptr<IComputeColor>\ component)\ :\ \_component(component)\ \{\}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ computeColor(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}}\ \&ray,\ \textcolor{keywordtype}{int}\ depth,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}}\ \&world,\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ background)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1RayColor}{RayColor}}\ rayColor;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<IMaterial>\ material;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (depth\ <=\ 0)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}(0,0,0);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (world.hit(ray,\ \{0.001,\ Math::MathUtils::posInfinity\},\ rayColor,\ material))\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}}\ scattered;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ attenuation;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (material-\/>scatter(ray,\ rayColor,\ attenuation,\ scattered))\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ material-\/>emitted()\ +\ attenuation\ *\ computeColor(scattered,\ depth\ -\/\ 1,\ world,\ background);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ material-\/>emitted();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_component-\/>computeColor(ray,\ depth,\ world,\ background);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<IComputeColor>\ \_component;}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MATERIALCOMPUTECOLOR\_HPP}}
+
+\end{DoxyCode}

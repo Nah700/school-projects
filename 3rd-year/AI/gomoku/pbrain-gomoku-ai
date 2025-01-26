@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+from src.protocol import BrainThreadManager
+
+def main():
+    try:
+        BrainThreadManager()
+        return 0
+    except Exception as e:
+        return 84
+
+if __name__ == "__main__":
+    main()

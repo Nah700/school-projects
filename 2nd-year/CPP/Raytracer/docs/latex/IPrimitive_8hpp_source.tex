@@ -1,0 +1,34 @@
+\doxysection{IPrimitive.\+hpp}
+\hypertarget{IPrimitive_8hpp_source}{}\label{IPrimitive_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Primitives/IPrimitive.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Primitives/IPrimitive.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2024}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ IPrimitive}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ IPRIMITIVE\_HPP\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ IPRIMITIVE\_HPP\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../Ray.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../Textures/Materials.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1IPrimitive}{IPrimitive}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{\string~IPrimitive}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ hits(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ std::pair<double,\ double>\ bornes,\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,\ std::shared\_ptr<Raytracer::IMaterial>\ \&material)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ getOrigin()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::shared\_ptr<IMaterial>\ getMaterial()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setOrigin(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&origin)\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setMaterial(std::shared\_ptr<IMaterial>\ material)\ =\ 0;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ !IPRIMITIVE\_HPP\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

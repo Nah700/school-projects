@@ -1,0 +1,75 @@
+\doxysection{Raytracer\+::APrimitive Class Reference}
+\hypertarget{classRaytracer_1_1APrimitive}{}\label{classRaytracer_1_1APrimitive}\index{Raytracer::APrimitive@{Raytracer::APrimitive}}
+Inheritance diagram for Raytracer\+::APrimitive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1APrimitive}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88}{get\+Origin}} () const override
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \mbox{\hyperlink{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e}{get\+Material}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c}{set\+Origin}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&origin) override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176}{set\+Material}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ material) override
+\item 
+\Hypertarget{classRaytracer_1_1APrimitive_acb8ff595b24ed64d4389cce611d6322b}\label{classRaytracer_1_1APrimitive_acb8ff595b24ed64d4389cce611d6322b} 
+virtual bool {\bfseries hits} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ \&material) const =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool {\bfseries hits} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, std\+::pair$<$ double, double $>$ bornes, \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}} $>$ \&material) const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e}\index{Raytracer::APrimitive@{Raytracer::APrimitive}!getMaterial@{getMaterial}}
+\index{getMaterial@{getMaterial}!Raytracer::APrimitive@{Raytracer::APrimitive}}
+\doxysubsubsection{\texorpdfstring{getMaterial()}{getMaterial()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1APrimitive_a307321b9a0a6754e1741751b4866076e} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ Raytracer\+::\+APrimitive\+::get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}.
+
+\Hypertarget{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88}\index{Raytracer::APrimitive@{Raytracer::APrimitive}!getOrigin@{getOrigin}}
+\index{getOrigin@{getOrigin}!Raytracer::APrimitive@{Raytracer::APrimitive}}
+\doxysubsubsection{\texorpdfstring{getOrigin()}{getOrigin()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1APrimitive_a13398aac190a18be9a57fa8b20709d88} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} Raytracer\+::\+APrimitive\+::get\+Origin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}.
+
+\Hypertarget{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176}\index{Raytracer::APrimitive@{Raytracer::APrimitive}!setMaterial@{setMaterial}}
+\index{setMaterial@{setMaterial}!Raytracer::APrimitive@{Raytracer::APrimitive}}
+\doxysubsubsection{\texorpdfstring{setMaterial()}{setMaterial()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1APrimitive_a4d00e0a41c415ecf447987ef8eaf5176} 
+void Raytracer\+::\+APrimitive\+::set\+Material (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$}]{material}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}.
+
+\Hypertarget{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c}\index{Raytracer::APrimitive@{Raytracer::APrimitive}!setOrigin@{setOrigin}}
+\index{setOrigin@{setOrigin}!Raytracer::APrimitive@{Raytracer::APrimitive}}
+\doxysubsubsection{\texorpdfstring{setOrigin()}{setOrigin()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1APrimitive_aeea54c44319c42dbc4c05d717897ae8c} 
+void Raytracer\+::\+APrimitive\+::set\+Origin (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&}]{origin}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IPrimitive}{Raytracer\+::\+IPrimitive}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Primitives/APrimitive.\+hpp\end{DoxyCompactItemize}

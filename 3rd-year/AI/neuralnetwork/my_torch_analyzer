@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+import json
+from analyzer_src.MLP import NeuralNetwork
+from analyzer_src.analyzer_class import Analyzer
+from analyzer_src.parsing import parsing
+from analyzer_src.run import predict, train
+from generator_src.save_data import save
+
+analyzer: Analyzer = parsing()
+
+with open(analyzer.loadfile, 'r') as f:
+    conf = json.load(f)
+    nn = NeuralNetwork(conf)
+
+if analyzer.predict:
+    predict(nn, analyzer.dataset_file)
+
+if analyzer.train:
+    nn = train(nn, analyzer.dataset_file)
+    if analyzer.save is not None:
+        save(nn.learning_rate, nn.weights_input_hidden.tolist(), nn.weights_hidden_output.tolist(),
+             nn.bias_hidden.tolist(), nn.bias_output.tolist(), analyzer.loadfile, analyzer.save)
+    else:
+        save(nn.learning_rate, nn.weights_input_hidden.tolist(), nn.weights_hidden_output.tolist(),
+             nn.bias_hidden.tolist(), nn.bias_output.tolist(), analyzer.loadfile, analyzer.loadfile)
+
+if not analyzer.predict and not analyzer.train:
+    print("Error: not predicting either not training...")
+    exit(84)

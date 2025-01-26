@@ -1,0 +1,27 @@
+\doxysection{Ray\+Color.\+hpp}
+\hypertarget{RayColor_8hpp_source}{}\label{RayColor_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Utils/RayColor.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Utils/RayColor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HITTABLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HITTABLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../Ray.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}../Maths/MathUtils.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1RayColor}{RayColor}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \_pixel;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ \_normal;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_point;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ frontFace;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setFaceNormal(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&r,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Vector3d}{Math::Vector3d}}\ \&normal)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>frontFace\ =\ normal.dot(r.getDirection())\ <\ 0;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_normal\ =\ this-\/>frontFace\ ?\ normal\ :\ normal\ *\ -\/1;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

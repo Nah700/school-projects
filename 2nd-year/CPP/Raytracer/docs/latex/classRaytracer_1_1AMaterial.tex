@@ -1,0 +1,67 @@
+\doxysection{Raytracer\+::AMaterial Class Reference}
+\hypertarget{classRaytracer_1_1AMaterial}{}\label{classRaytracer_1_1AMaterial}\index{Raytracer::AMaterial@{Raytracer::AMaterial}}
+Inheritance diagram for Raytracer\+::AMaterial\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.818792cm]{classRaytracer_1_1AMaterial}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_a73ad5e3d42cac6d8e1792a6440693c3b}{get\+Albedo}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1AMaterial_abf369e044bd87232eb88e05940315653}{set\+Albedo}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&albedo)
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_ac75a73e2e2de73e6a7456abc96b0479e}{emitted}} () const
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1AMaterial_a1db408e0334a54669019d770b8cef076}{scatter}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&attenuation, \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray\+Out) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1AMaterial_ac75a73e2e2de73e6a7456abc96b0479e}\index{Raytracer::AMaterial@{Raytracer::AMaterial}!emitted@{emitted}}
+\index{emitted@{emitted}!Raytracer::AMaterial@{Raytracer::AMaterial}}
+\doxysubsubsection{\texorpdfstring{emitted()}{emitted()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1AMaterial_ac75a73e2e2de73e6a7456abc96b0479e} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} Raytracer\+::\+AMaterial\+::emitted (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}}.
+
+\Hypertarget{classRaytracer_1_1AMaterial_a73ad5e3d42cac6d8e1792a6440693c3b}\index{Raytracer::AMaterial@{Raytracer::AMaterial}!getAlbedo@{getAlbedo}}
+\index{getAlbedo@{getAlbedo}!Raytracer::AMaterial@{Raytracer::AMaterial}}
+\doxysubsubsection{\texorpdfstring{getAlbedo()}{getAlbedo()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1AMaterial_a73ad5e3d42cac6d8e1792a6440693c3b} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} Raytracer\+::\+AMaterial\+::get\+Albedo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}}.
+
+\Hypertarget{classRaytracer_1_1AMaterial_a1db408e0334a54669019d770b8cef076}\index{Raytracer::AMaterial@{Raytracer::AMaterial}!scatter@{scatter}}
+\index{scatter@{scatter}!Raytracer::AMaterial@{Raytracer::AMaterial}}
+\doxysubsubsection{\texorpdfstring{scatter()}{scatter()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1AMaterial_a1db408e0334a54669019d770b8cef076} 
+bool Raytracer\+::\+AMaterial\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray}{, }\item[{const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&}]{ray\+Color}{, }\item[{\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&}]{attenuation}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray\+Out}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}}.
+
+\Hypertarget{classRaytracer_1_1AMaterial_abf369e044bd87232eb88e05940315653}\index{Raytracer::AMaterial@{Raytracer::AMaterial}!setAlbedo@{setAlbedo}}
+\index{setAlbedo@{setAlbedo}!Raytracer::AMaterial@{Raytracer::AMaterial}}
+\doxysubsubsection{\texorpdfstring{setAlbedo()}{setAlbedo()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1AMaterial_abf369e044bd87232eb88e05940315653} 
+void Raytracer\+::\+AMaterial\+::set\+Albedo (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&}]{albedo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRaytracer_1_1IMaterial}{Raytracer\+::\+IMaterial}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Textures/Materials.\+hpp\end{DoxyCompactItemize}

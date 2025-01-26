@@ -1,0 +1,92 @@
+\doxysection{Materials.\+hpp}
+\hypertarget{Materials_8hpp_source}{}\label{Materials_8hpp_source}\index{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Textures/Materials.hpp@{/home/nahimkandari/Documents/delivery/B-\/OOP-\/400-\/STG-\/4-\/1-\/raytracer-\/nahim.kandari/src/Textures/Materials.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MATERIAL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MATERIAL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../Utils/RayColor.hpp"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }Raytracer\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{\string~IMaterial}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ getAlbedo()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setAlbedo(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&albedo)\ =\ 0;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ emitted()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{\string~AMaterial}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ getAlbedo()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\_albedo;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setAlbedo(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&albedo)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_albedo\ =\ albedo;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ emitted()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}(0,\ 0,\ 0);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00035\ \textcolor{keyword}{\ \ \ \ \ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)ray;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)rayColor;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)attenuation;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (void)rayOut;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \_albedo;}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1Lambertian}{Lambertian}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Lambertian}{Lambertian}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&albedo)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>setAlbedo(albedo);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00054\ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1Metal}{Metal}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Metal}{Metal}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&albedo,\ \textcolor{keywordtype}{double}\ fuzz);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_fuzz;}
+\DoxyCodeLine{00063\ \ \ \ \ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1Dielectric}{Dielectric}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1Dielectric}{Dielectric}}(\textcolor{keywordtype}{double}\ refractionIndex)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\_refractionIndex\ =\ refractionIndex;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\ \&rayColor,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ reflectance(\textcolor{keywordtype}{double}\ cosine,\ \textcolor{keywordtype}{double}\ refractionIndex);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \_refractionIndex;}
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRaytracer_1_1DiffuseLight}{DiffuseLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classRaytracer_1_1AMaterial}{AMaterial}}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRaytracer_1_1DiffuseLight}{DiffuseLight}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\&\ albedo);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ scatter(\textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\&\ ray,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer::RayColor}}\&\ rayColor,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ \&attenuation,\ \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer::Ray}}\ \&rayOut)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classMath_1_1Point3d}{Math::Point3d}}\ emitted()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00083\ \ \ \ \ \};}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

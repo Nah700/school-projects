@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">{-
+-- EPITECH PROJECT, 2024
+-- B-FUN-400-STG-4-1-mypandoc-noe.tritsch
+-- File description:
+-- Document
+-}</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Document</span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-9"></span><span>    </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier">Document</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-10"></span><span>    </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier">Header</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-11"></span><span>    </span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier">Content</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-12"></span><span>    </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier">FormattingElement</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-13"></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-14"></span><span>
+</span><span id="line-15"></span><span class="hs-keyword">data</span><span> </span><span id="Document"><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-var">Document</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Document"><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-var">Document</span></a></span></span><span> </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-16"></span><span>    </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040385"><span id="local-6989586621679040387"><span id="local-6989586621679040395"><span class="annot"><span class="annottext">Int -&gt; Document -&gt; ShowS
+[Document] -&gt; ShowS
+Document -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Document] -&gt; ShowS
+$cshowList :: [Document] -&gt; ShowS
+show :: Document -&gt; String
+$cshow :: Document -&gt; String
+showsPrec :: Int -&gt; Document -&gt; ShowS
+$cshowsPrec :: Int -&gt; Document -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679040376"><span id="local-6989586621679040382"><span class="annot"><span class="annottext">Document -&gt; Document -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Document -&gt; Document -&gt; Bool
+$c/= :: Document -&gt; Document -&gt; Bool
+== :: Document -&gt; Document -&gt; Bool
+$c== :: Document -&gt; Document -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-17"></span><span>
+</span><span id="line-18"></span><span class="hs-keyword">data</span><span> </span><span id="Header"><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-var">Header</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span id="Header"><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-var">Header</span></a></span></span><span> </span><span class="hs-special">{</span><span>
+</span><span id="line-19"></span><span>    </span><span id="title"><span class="annot"><span class="annottext">Header -&gt; String
+</span><a href="Document.html#title"><span class="hs-identifier hs-var hs-var">title</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">,</span><span>
+</span><span id="line-20"></span><span>    </span><span id="author"><span class="annot"><span class="annottext">Header -&gt; Maybe String
+</span><a href="Document.html#author"><span class="hs-identifier hs-var hs-var">author</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">,</span><span>
+</span><span id="line-21"></span><span>    </span><span id="date"><span class="annot"><span class="annottext">Header -&gt; Maybe String
+</span><a href="Document.html#date"><span class="hs-identifier hs-var hs-var">date</span></a></span></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-22"></span><span class="hs-special">}</span><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040359"><span id="local-6989586621679040361"><span id="local-6989586621679040369"><span class="annot"><span class="annottext">Int -&gt; Header -&gt; ShowS
+[Header] -&gt; ShowS
+Header -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Header] -&gt; ShowS
+$cshowList :: [Header] -&gt; ShowS
+show :: Header -&gt; String
+$cshow :: Header -&gt; String
+showsPrec :: Int -&gt; Header -&gt; ShowS
+$cshowsPrec :: Int -&gt; Header -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679040349"><span id="local-6989586621679040356"><span class="annot"><span class="annottext">Header -&gt; Header -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Header -&gt; Header -&gt; Bool
+$c/= :: Header -&gt; Header -&gt; Bool
+== :: Header -&gt; Header -&gt; Bool
+$c== :: Header -&gt; Header -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-23"></span><span>
+</span><span id="line-24"></span><span class="hs-keyword">data</span><span> </span><span id="Content"><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-var">Content</span></a></span></span><span>
+</span><span id="line-25"></span><span>    </span><span class="hs-glyph">=</span><span> </span><span id="Text"><span class="annot"><a href="Document.html#Text"><span class="hs-identifier hs-var">Text</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-26"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Formatting"><span class="annot"><a href="Document.html#Formatting"><span class="hs-identifier hs-var">Formatting</span></a></span></span><span> </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier hs-type">FormattingElement</span></a></span><span>
+</span><span id="line-27"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Link"><span class="annot"><a href="Document.html#Link"><span class="hs-identifier hs-var">Link</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-28"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Image"><span class="annot"><a href="Document.html#Image"><span class="hs-identifier hs-var">Image</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-29"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Paragraph"><span class="annot"><a href="Document.html#Paragraph"><span class="hs-identifier hs-var">Paragraph</span></a></span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-30"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Section"><span class="annot"><a href="Document.html#Section"><span class="hs-identifier hs-var">Section</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-31"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="CodeBlock"><span class="annot"><a href="Document.html#CodeBlock"><span class="hs-identifier hs-var">CodeBlock</span></a></span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-32"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="List"><span class="annot"><a href="Document.html#List"><span class="hs-identifier hs-var">List</span></a></span></span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span>
+</span><span id="line-33"></span><span>    </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040313"><span id="local-6989586621679040315"><span id="local-6989586621679040338"><span class="annot"><span class="annottext">Int -&gt; Content -&gt; ShowS
+[Content] -&gt; ShowS
+Content -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [Content] -&gt; ShowS
+$cshowList :: [Content] -&gt; ShowS
+show :: Content -&gt; String
+$cshow :: Content -&gt; String
+showsPrec :: Int -&gt; Content -&gt; ShowS
+$cshowsPrec :: Int -&gt; Content -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679040296"><span id="local-6989586621679040311"><span class="annot"><span class="annottext">Content -&gt; Content -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: Content -&gt; Content -&gt; Bool
+$c/= :: Content -&gt; Content -&gt; Bool
+== :: Content -&gt; Content -&gt; Bool
+$c== :: Content -&gt; Content -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-34"></span><span>
+</span><span id="line-35"></span><span class="hs-keyword">data</span><span> </span><span id="FormattingElement"><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier hs-var">FormattingElement</span></a></span></span><span>
+</span><span id="line-36"></span><span>    </span><span class="hs-glyph">=</span><span> </span><span id="Italic"><span class="annot"><a href="Document.html#Italic"><span class="hs-identifier hs-var">Italic</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-37"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Bold"><span class="annot"><a href="Document.html#Bold"><span class="hs-identifier hs-var">Bold</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-38"></span><span>    </span><span class="hs-glyph">|</span><span> </span><span id="Code"><span class="annot"><a href="Document.html#Code"><span class="hs-identifier hs-var">Code</span></a></span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-39"></span><span>    </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040280"><span id="local-6989586621679040282"><span id="local-6989586621679040291"><span class="annot"><span class="annottext">Int -&gt; FormattingElement -&gt; ShowS
+[FormattingElement] -&gt; ShowS
+FormattingElement -&gt; String
+forall a.
+(Int -&gt; a -&gt; ShowS) -&gt; (a -&gt; String) -&gt; ([a] -&gt; ShowS) -&gt; Show a
+showList :: [FormattingElement] -&gt; ShowS
+$cshowList :: [FormattingElement] -&gt; ShowS
+show :: FormattingElement -&gt; String
+$cshow :: FormattingElement -&gt; String
+showsPrec :: Int -&gt; FormattingElement -&gt; ShowS
+$cshowsPrec :: Int -&gt; FormattingElement -&gt; ShowS
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var hs-var hs-var">Show</span></span></span></span></span><span class="hs-special">,</span><span> </span><span id="local-6989586621679040272"><span id="local-6989586621679040278"><span class="annot"><span class="annottext">FormattingElement -&gt; FormattingElement -&gt; Bool
+forall a. (a -&gt; a -&gt; Bool) -&gt; (a -&gt; a -&gt; Bool) -&gt; Eq a
+/= :: FormattingElement -&gt; FormattingElement -&gt; Bool
+$c/= :: FormattingElement -&gt; FormattingElement -&gt; Bool
+== :: FormattingElement -&gt; FormattingElement -&gt; Bool
+$c== :: FormattingElement -&gt; FormattingElement -&gt; Bool
+</span><span class="hs-identifier hs-var hs-var hs-var hs-var hs-var hs-var">Eq</span></span></span></span><span class="hs-special">)</span><span>
+</span><span id="line-40"></span></pre></body></html>

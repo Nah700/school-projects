@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">{-
+-- EPITECH PROJECT, 2024
+-- B-FUN-400-STG-4-1-mypandoc-noe.tritsch
+-- File description:
+-- DocumentToJson
+-}</span><span>
+</span><span id="line-7"></span><span>
+</span><span id="line-8"></span><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">DocumentToJson</span><span> </span><span class="hs-special">(</span><span>
+</span><span id="line-9"></span><span>    </span><span class="annot"><a href="DocumentToJson.html#documentToJson"><span class="hs-identifier">documentToJson</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-10"></span><span>    </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier">Document</span></a></span><span class="hs-special">,</span><span>
+</span><span id="line-11"></span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><span id="line-12"></span><span>
+</span><span id="line-13"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Document.html"><span class="hs-identifier">Document</span></a></span><span>
+</span><span id="line-14"></span><span>    </span><span class="hs-special">(</span><span> </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier">Document</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-15"></span><span>    </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier">Header</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-16"></span><span>    </span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier">Content</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
+</span><span id="line-17"></span><span>    </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier">FormattingElement</span></a></span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><span id="line-18"></span><span>
+</span><span id="line-19"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Indent.html"><span class="hs-identifier">Indent</span></a></span><span>
+</span><span id="line-20"></span><span>
+</span><span id="line-21"></span><span class="hs-comment">-- TODO: handle the case where there is only one title (no ',' after the title)</span><span>
+</span><span id="line-22"></span><span class="annot"><a href="DocumentToJson.html#headerToJson"><span class="hs-identifier hs-type">headerToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-23"></span><span id="headerToJson"><span class="annot"><span class="annottext">headerToJson :: Header -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#headerToJson"><span class="hs-identifier hs-var hs-var">headerToJson</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Header"><span class="hs-identifier hs-type">Header</span></a></span><span> </span><span id="local-6989586621679040746"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040746"><span class="hs-identifier hs-var">titleStr</span></a></span></span><span> </span><span id="local-6989586621679040745"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040745"><span class="hs-identifier hs-var">au</span></a></span></span><span> </span><span id="local-6989586621679040744"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040744"><span class="hs-identifier hs-var">da</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040743"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040743"><span class="hs-identifier hs-var">l</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-24"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-25"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040743"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;title\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040746"><span class="hs-identifier hs-var">titleStr</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;,\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-26"></span><span>    </span><span class="annot"><span class="annottext">forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
+</span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621679040739"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040739"><span class="hs-identifier hs-var">a</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040743"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;author\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040739"><span class="hs-identifier hs-var">a</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;,\n&quot;</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040745"><span class="hs-identifier hs-var">au</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-27"></span><span>    </span><span class="annot"><span class="annottext">forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
+</span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621679040738"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040738"><span class="hs-identifier hs-var">d</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040743"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;date\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040738"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;\n&quot;</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040744"><span class="hs-identifier hs-var">da</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-28"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040743"><span class="hs-identifier hs-var">l</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-29"></span><span>
+</span><span id="line-30"></span><span class="annot"><a href="DocumentToJson.html#textToJson"><span class="hs-identifier hs-type">textToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-31"></span><span id="textToJson"><span class="annot"><span class="annottext">textToJson :: String -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#textToJson"><span class="hs-identifier hs-var hs-var">textToJson</span></a></span></span><span> </span><span id="local-6989586621679040736"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040736"><span class="hs-identifier hs-var">str</span></a></span></span><span> </span><span id="local-6989586621679040735"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040735"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040735"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040736"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;&quot;</span></span><span class="hs-special">)</span><span>
+</span><span id="line-32"></span><span>
+</span><span id="line-33"></span><span class="annot"><a href="DocumentToJson.html#formattingToJson"><span class="hs-identifier hs-type">formattingToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#FormattingElement"><span class="hs-identifier hs-type">FormattingElement</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-34"></span><span id="formattingToJson"><span class="annot"><span class="annottext">formattingToJson :: FormattingElement -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#formattingToJson"><span class="hs-identifier hs-var hs-var">formattingToJson</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Italic"><span class="hs-identifier hs-type">Italic</span></a></span><span> </span><span id="local-6989586621679040731"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040731"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040730"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040730"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-35"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040730"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-36"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040730"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;italic\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040731"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-37"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040730"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-38"></span><span class="annot"><a href="DocumentToJson.html#formattingToJson"><span class="hs-identifier hs-var">formattingToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Bold"><span class="hs-identifier hs-type">Bold</span></a></span><span> </span><span id="local-6989586621679040728"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040728"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040727"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040727"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-39"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040727"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-40"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040727"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;bold\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040728"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-41"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040727"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-42"></span><span class="annot"><a href="DocumentToJson.html#formattingToJson"><span class="hs-identifier hs-var">formattingToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Code"><span class="hs-identifier hs-type">Code</span></a></span><span> </span><span id="local-6989586621679040725"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040725"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040724"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040724"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-43"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040724"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-44"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040724"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;code\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; String
+</span><a href="Indent.html#escapeString"><span class="hs-identifier hs-var">escapeString</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040725"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-45"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040724"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-46"></span><span>
+</span><span id="line-47"></span><span class="annot"><a href="DocumentToJson.html#linkToJson"><span class="hs-identifier hs-type">linkToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-48"></span><span id="linkToJson"><span class="annot"><span class="annottext">linkToJson :: String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#linkToJson"><span class="hs-identifier hs-var hs-var">linkToJson</span></a></span></span><span> </span><span id="local-6989586621679040722"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040722"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040721"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040721"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040720"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-49"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-50"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;link\&quot;: {\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-51"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;url\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040722"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;,\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-52"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;content\&quot;: &quot;</span></span><span>
+</span><span id="line-53"></span><span>        </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var">contentsToJsonArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040721"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-54"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-55"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040720"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-56"></span><span>
+</span><span id="line-57"></span><span class="annot"><a href="DocumentToJson.html#imageToJson"><span class="hs-identifier hs-type">imageToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-58"></span><span id="imageToJson"><span class="annot"><span class="annottext">imageToJson :: String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#imageToJson"><span class="hs-identifier hs-var hs-var">imageToJson</span></a></span></span><span> </span><span id="local-6989586621679040717"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040717"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040716"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040716"><span class="hs-identifier hs-var">alt</span></a></span></span><span> </span><span id="local-6989586621679040715"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-59"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-60"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;image\&quot;: {\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-61"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;url\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040717"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;,\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-62"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;alt\&quot;: &quot;</span></span><span>
+</span><span id="line-63"></span><span>        </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var">contentsToJsonArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040716"><span class="hs-identifier hs-var">alt</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-64"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-65"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040715"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-66"></span><span>
+</span><span id="line-67"></span><span class="annot"><a href="DocumentToJson.html#paragraphToJson"><span class="hs-identifier hs-type">paragraphToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-68"></span><span id="paragraphToJson"><span class="annot"><span class="annottext">paragraphToJson :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#paragraphToJson"><span class="hs-identifier hs-var hs-var">paragraphToJson</span></a></span></span><span> </span><span id="local-6989586621679040713"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040713"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var">contentsToJsonArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040713"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">True</span></span><span>
+</span><span id="line-69"></span><span>
+</span><span id="line-70"></span><span class="annot"><a href="DocumentToJson.html#sectionToJson"><span class="hs-identifier hs-type">sectionToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Maybe</span></span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-71"></span><span id="sectionToJson"><span class="annot"><span class="annottext">sectionToJson :: Maybe String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#sectionToJson"><span class="hs-identifier hs-var hs-var">sectionToJson</span></a></span></span><span> </span><span id="local-6989586621679040711"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040711"><span class="hs-identifier hs-var">titleStr</span></a></span></span><span> </span><span id="local-6989586621679040710"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040710"><span class="hs-identifier hs-var">content</span></a></span></span><span> </span><span id="local-6989586621679040709"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-72"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-73"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;section\&quot;: {\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-74"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span>
+</span><span id="line-75"></span><span>        </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall b a. b -&gt; (a -&gt; b) -&gt; Maybe a -&gt; b
+</span><span class="hs-identifier hs-var">maybe</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span> </span><span class="hs-special">(</span><span class="hs-glyph">\</span><span id="local-6989586621679040708"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040708"><span class="hs-identifier hs-var">t</span></a></span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;title\&quot;: \&quot;&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040708"><span class="hs-identifier hs-var">t</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;,\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040711"><span class="hs-identifier hs-var">titleStr</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-76"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;content\&quot;: &quot;</span></span><span>
+</span><span id="line-77"></span><span>        </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var">contentsToJsonArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040710"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-78"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-79"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040709"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-80"></span><span>
+</span><span id="line-81"></span><span class="annot"><a href="DocumentToJson.html#codeBlockToJson"><span class="hs-identifier hs-type">codeBlockToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-82"></span><span id="codeBlockToJson"><span class="annot"><span class="annottext">codeBlockToJson :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#codeBlockToJson"><span class="hs-identifier hs-var hs-var">codeBlockToJson</span></a></span></span><span> </span><span id="local-6989586621679040706"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040706"><span class="hs-identifier hs-var">codeLines</span></a></span></span><span> </span><span id="local-6989586621679040705"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-83"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-84"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;codeblock\&quot;: [\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-85"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentToJson"><span class="hs-operator hs-var">`contentToJson`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040706"><span class="hs-identifier hs-var">codeLines</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-86"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;]\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-87"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040705"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-88"></span><span>
+</span><span id="line-89"></span><span class="annot"><a href="DocumentToJson.html#listToJson"><span class="hs-identifier hs-type">listToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-90"></span><span id="listToJson"><span class="annot"><span class="annottext">listToJson :: [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#listToJson"><span class="hs-identifier hs-var hs-var">listToJson</span></a></span></span><span> </span><span id="local-6989586621679040701"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040701"><span class="hs-identifier hs-var">items</span></a></span></span><span> </span><span id="local-6989586621679040700"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-91"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-92"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;list\&quot;: [\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-93"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentToJson"><span class="hs-operator hs-var">`contentToJson`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">2</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040701"><span class="hs-identifier hs-var">items</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-94"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;]\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-95"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040700"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;}&quot;</span></span><span>
+</span><span id="line-96"></span><span>
+</span><span id="line-97"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-type">contentToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-98"></span><span id="contentToJson"><span class="annot"><span class="annottext">contentToJson :: Content -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var hs-var">contentToJson</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Text"><span class="hs-identifier hs-type">Text</span></a></span><span> </span><span id="local-6989586621679040698"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040698"><span class="hs-identifier hs-var">str</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040697"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040697"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#textToJson"><span class="hs-identifier hs-var">textToJson</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040698"><span class="hs-identifier hs-var">str</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040697"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-99"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Formatting"><span class="hs-identifier hs-type">Formatting</span></a></span><span> </span><span id="local-6989586621679040695"><span class="annot"><span class="annottext">FormattingElement
+</span><a href="#local-6989586621679040695"><span class="hs-identifier hs-var">formatting</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040694"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040694"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">FormattingElement -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#formattingToJson"><span class="hs-identifier hs-var">formattingToJson</span></a></span><span> </span><span class="annot"><span class="annottext">FormattingElement
+</span><a href="#local-6989586621679040695"><span class="hs-identifier hs-var">formatting</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040694"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-100"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Link"><span class="hs-identifier hs-type">Link</span></a></span><span> </span><span id="local-6989586621679040692"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040692"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040691"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040691"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040690"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040690"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#linkToJson"><span class="hs-identifier hs-var">linkToJson</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040692"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040691"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040690"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-101"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Image"><span class="hs-identifier hs-type">Image</span></a></span><span> </span><span id="local-6989586621679040688"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040688"><span class="hs-identifier hs-var">url</span></a></span></span><span> </span><span id="local-6989586621679040687"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040687"><span class="hs-identifier hs-var">alt</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040686"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040686"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#imageToJson"><span class="hs-identifier hs-var">imageToJson</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040688"><span class="hs-identifier hs-var">url</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040687"><span class="hs-identifier hs-var">alt</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040686"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-102"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Paragraph"><span class="hs-identifier hs-type">Paragraph</span></a></span><span> </span><span id="local-6989586621679040684"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040684"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040683"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040683"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#paragraphToJson"><span class="hs-identifier hs-var">paragraphToJson</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040684"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040683"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-103"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Section"><span class="hs-identifier hs-type">Section</span></a></span><span> </span><span id="local-6989586621679040681"><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040681"><span class="hs-identifier hs-var">t</span></a></span></span><span> </span><span id="local-6989586621679040680"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040680"><span class="hs-identifier hs-var">c</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040679"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040679"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">Maybe String -&gt; [Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#sectionToJson"><span class="hs-identifier hs-var">sectionToJson</span></a></span><span> </span><span class="annot"><span class="annottext">Maybe String
+</span><a href="#local-6989586621679040681"><span class="hs-identifier hs-var">t</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040680"><span class="hs-identifier hs-var">c</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040679"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-104"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#CodeBlock"><span class="hs-identifier hs-type">CodeBlock</span></a></span><span> </span><span id="local-6989586621679040677"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040677"><span class="hs-identifier hs-var">codeLines</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040676"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040676"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#codeBlockToJson"><span class="hs-identifier hs-var">codeBlockToJson</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040677"><span class="hs-identifier hs-var">codeLines</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040676"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-105"></span><span class="annot"><a href="DocumentToJson.html#contentToJson"><span class="hs-identifier hs-var">contentToJson</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#List"><span class="hs-identifier hs-type">List</span></a></span><span> </span><span id="local-6989586621679040674"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040674"><span class="hs-identifier hs-var">items</span></a></span></span><span class="hs-special">)</span><span> </span><span id="local-6989586621679040673"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040673"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#listToJson"><span class="hs-identifier hs-var">listToJson</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040674"><span class="hs-identifier hs-var">items</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040673"><span class="hs-identifier hs-var">level</span></a></span><span>
+</span><span id="line-106"></span><span>
+</span><span id="line-107"></span><span class="annot"><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-type">contentsToJsonArray</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><a href="Document.html#Content"><span class="hs-identifier hs-type">Content</span></a></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Bool</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Int</span></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-108"></span><span id="contentsToJsonArray"><span class="annot"><span class="annottext">contentsToJsonArray :: [Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var hs-var">contentsToJsonArray</span></a></span></span><span> </span><span id="local-6989586621679040672"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040672"><span class="hs-identifier hs-var">contents</span></a></span></span><span> </span><span id="local-6989586621679040671"><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679040671"><span class="hs-identifier hs-var">indentedStart</span></a></span></span><span> </span><span id="local-6989586621679040670"><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040670"><span class="hs-identifier hs-var">level</span></a></span></span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-109"></span><span>    </span><span class="hs-special">(</span><span class="hs-keyword">if</span><span> </span><span class="annot"><span class="annottext">Bool
+</span><a href="#local-6989586621679040671"><span class="hs-identifier hs-var">indentedStart</span></a></span><span> </span><span class="hs-keyword">then</span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040670"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;[\n&quot;</span></span><span> </span><span class="hs-keyword">else</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;[\n&quot;</span></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-110"></span><span>    </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">forall a b. (a -&gt; b) -&gt; [a] -&gt; [b]
+</span><span class="hs-identifier hs-var">map</span></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Content -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentToJson"><span class="hs-operator hs-var">`contentToJson`</span></a></span><span> </span><span class="hs-special">(</span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040670"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. Num a =&gt; a -&gt; a -&gt; a
+</span><span class="hs-operator hs-var">+</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span class="hs-special">)</span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040672"><span class="hs-identifier hs-var">contents</span></a></span><span class="hs-special">)</span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-111"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-112"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><a href="#local-6989586621679040670"><span class="hs-identifier hs-var">level</span></a></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;]&quot;</span></span><span>
+</span><span id="line-113"></span><span>
+</span><span id="line-114"></span><span class="annot"><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-type">commaSeparated</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-115"></span><span id="commaSeparated"><span class="annot"><span class="annottext">commaSeparated :: [String] -&gt; String
+</span><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var hs-var">commaSeparated</span></a></span></span><span> </span><span class="hs-special">[</span><span class="hs-special">]</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;&quot;</span></span><span>
+</span><span id="line-116"></span><span class="annot"><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">[</span><span id="local-6989586621679040669"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040669"><span class="hs-identifier hs-var">x</span></a></span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040669"><span class="hs-identifier hs-var">x</span></a></span><span>
+</span><span id="line-117"></span><span class="annot"><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="hs-special">(</span><span id="local-6989586621679040668"><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040668"><span class="hs-identifier hs-var">x</span></a></span></span><span class="annot"><span class="hs-glyph hs-type">:</span></span><span id="local-6989586621679040667"><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679040667"><span class="hs-identifier hs-var">xs</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">String
+</span><a href="#local-6989586621679040668"><span class="hs-identifier hs-var">x</span></a></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;,\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[String] -&gt; String
+</span><a href="DocumentToJson.html#commaSeparated"><span class="hs-identifier hs-var">commaSeparated</span></a></span><span> </span><span class="annot"><span class="annottext">[String]
+</span><a href="#local-6989586621679040667"><span class="hs-identifier hs-var">xs</span></a></span><span>
+</span><span id="line-118"></span><span>
+</span><span id="line-119"></span><span class="annot"><a href="DocumentToJson.html#documentToJson"><span class="hs-identifier hs-type">documentToJson</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-type">Document</span></a></span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
+</span><span id="line-120"></span><span id="documentToJson"><span class="annot"><span class="annottext">documentToJson :: Document -&gt; String
+</span><a href="DocumentToJson.html#documentToJson"><span class="hs-identifier hs-var hs-var">documentToJson</span></a></span></span><span> </span><span class="hs-special">(</span><span class="annot"><a href="Document.html#Document"><span class="hs-identifier hs-type">Document</span></a></span><span> </span><span id="local-6989586621679040665"><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040665"><span class="hs-identifier hs-var">header</span></a></span></span><span> </span><span id="local-6989586621679040664"><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040664"><span class="hs-identifier hs-var">content</span></a></span></span><span class="hs-special">)</span><span> </span><span class="hs-glyph">=</span><span>
+</span><span id="line-121"></span><span>    </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;{\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;header\&quot;: &quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-122"></span><span>    </span><span class="annot"><span class="annottext">Header -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#headerToJson"><span class="hs-identifier hs-var">headerToJson</span></a></span><span> </span><span class="annot"><span class="annottext">Header
+</span><a href="#local-6989586621679040665"><span class="hs-identifier hs-var">header</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;,\n&quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span>
+</span><span id="line-123"></span><span>    </span><span class="annot"><span class="annottext">Int -&gt; String -&gt; String
+</span><a href="Indent.html#addIndent"><span class="hs-identifier hs-var">addIndent</span></a></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\&quot;body\&quot;: &quot;</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">[Content] -&gt; Bool -&gt; Int -&gt; String
+</span><a href="DocumentToJson.html#contentsToJsonArray"><span class="hs-identifier hs-var">contentsToJsonArray</span></a></span><span> </span><span class="annot"><span class="annottext">[Content]
+</span><a href="#local-6989586621679040664"><span class="hs-identifier hs-var">content</span></a></span><span> </span><span class="annot"><span class="annottext">Bool
+</span><span class="hs-identifier hs-var">False</span></span><span> </span><span class="annot"><span class="annottext">Int
+</span><span class="hs-number">1</span></span><span> </span><span class="annot"><span class="annottext">forall a. [a] -&gt; [a] -&gt; [a]
+</span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
+</span><span class="hs-string">&quot;\n}&quot;</span></span><span>
+</span><span id="line-124"></span></pre></body></html>

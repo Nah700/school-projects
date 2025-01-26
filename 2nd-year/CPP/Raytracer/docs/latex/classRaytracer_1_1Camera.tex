@@ -1,0 +1,32 @@
+\doxysection{Raytracer\+::Camera Class Reference}
+\hypertarget{classRaytracer_1_1Camera}{}\label{classRaytracer_1_1Camera}\index{Raytracer::Camera@{Raytracer::Camera}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Camera_ad19104a32f6f22491fc37ba29a63a179}\label{classRaytracer_1_1Camera_ad19104a32f6f22491fc37ba29a63a179} 
+{\bfseries Camera} (int image\+Width, int samples\+Per\+Pixel, double fov, std\+::pair$<$ \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}}, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} $>$ look\+From\+At, double defocus, double focus, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} background=\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}}(-\/1, -\/1, -\/1))
+\item 
+\Hypertarget{classRaytracer_1_1Camera_a9e1b95a2ccc51ecaea8b9c4d68b7e739}\label{classRaytracer_1_1Camera_a9e1b95a2ccc51ecaea8b9c4d68b7e739} 
+std\+::string {\bfseries render} (const \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}} \&world)
+\item 
+\Hypertarget{classRaytracer_1_1Camera_aec09bde3a0f64e9eae16e600c48a63b1}\label{classRaytracer_1_1Camera_aec09bde3a0f64e9eae16e600c48a63b1} 
+\mbox{\hyperlink{classRaytracer_1_1Ray}{Ray}} {\bfseries get\+Ray} (int i, int j) const
+\item 
+\Hypertarget{classRaytracer_1_1Camera_a25a48ba7e53914d862bff8e89e27e81e}\label{classRaytracer_1_1Camera_a25a48ba7e53914d862bff8e89e27e81e} 
+\mbox{\hyperlink{classMath_1_1Vector3d}{Math\+::\+Vector3d}} {\bfseries sample\+Square} () const
+\item 
+\Hypertarget{classRaytracer_1_1Camera_a292bd00f62e70297cc9b3ce86843e911}\label{classRaytracer_1_1Camera_a292bd00f62e70297cc9b3ce86843e911} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} {\bfseries defocus\+Disk\+Sample} () const
+\item 
+\Hypertarget{classRaytracer_1_1Camera_adba5ea47865412c962fd06dd5fe56c19}\label{classRaytracer_1_1Camera_adba5ea47865412c962fd06dd5fe56c19} 
+std\+::tuple$<$ int, int, int $>$ {\bfseries convert\+Modal\+To\+Color} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&color)
+\item 
+\Hypertarget{classRaytracer_1_1Camera_ae54e05fa8d3b3dba42e75a839fffea29}\label{classRaytracer_1_1Camera_ae54e05fa8d3b3dba42e75a839fffea29} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} {\bfseries get\+Sample\+Color} (int i, int j, const \mbox{\hyperlink{classRaytracer_1_1Scene}{Scene}} \&scene)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Camera/Camera.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Camera/Camera.\+cpp\end{DoxyCompactItemize}

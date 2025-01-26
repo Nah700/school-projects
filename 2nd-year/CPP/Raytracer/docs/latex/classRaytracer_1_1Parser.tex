@@ -1,0 +1,74 @@
+\doxysection{Raytracer\+::Parser Class Reference}
+\hypertarget{classRaytracer_1_1Parser}{}\label{classRaytracer_1_1Parser}\index{Raytracer::Parser@{Raytracer::Parser}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a5e4e7fdcac91f88da3e01f10eef1c18c}\label{classRaytracer_1_1Parser_a5e4e7fdcac91f88da3e01f10eef1c18c} 
+{\bfseries Parser} (const std\+::string \&scene\+File)
+\item 
+\Hypertarget{classRaytracer_1_1Parser_acfe70f5638346f15f81f358d0656f5f0}\label{classRaytracer_1_1Parser_acfe70f5638346f15f81f358d0656f5f0} 
+int {\bfseries get\+Width} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a0e1c4934345491683a8b0466bf69f79a}\label{classRaytracer_1_1Parser_a0e1c4934345491683a8b0466bf69f79a} 
+int {\bfseries get\+Samples\+Per\+Pixel} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a394d4963a3f1a11633a447eb5c54d0b8}\label{classRaytracer_1_1Parser_a394d4963a3f1a11633a447eb5c54d0b8} 
+double {\bfseries get\+Fov} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a12bc0ac6eaed4a7198b70c35bfc04936}\label{classRaytracer_1_1Parser_a12bc0ac6eaed4a7198b70c35bfc04936} 
+std\+::pair$<$ \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}}, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} $>$ {\bfseries get\+Look\+From\+At} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_af60b26d470bd66a326018ad1f97638ba}\label{classRaytracer_1_1Parser_af60b26d470bd66a326018ad1f97638ba} 
+double {\bfseries get\+Defocus} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a5ead005d4d30c8cddecc9f410829d5ee}\label{classRaytracer_1_1Parser_a5ead005d4d30c8cddecc9f410829d5ee} 
+double {\bfseries get\+Focus} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_ae558d2c2e5d97736fb6a596da81e1eb3}\label{classRaytracer_1_1Parser_ae558d2c2e5d97736fb6a596da81e1eb3} 
+std\+::pair$<$ int, int $>$ {\bfseries get\+Res} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a4026ed121364f15ebcafd291ca540fa5}\label{classRaytracer_1_1Parser_a4026ed121364f15ebcafd291ca540fa5} 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} {\bfseries get\+Background} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_afbf535f8953da65be5d9957e8b1d7cb0}\label{classRaytracer_1_1Parser_afbf535f8953da65be5d9957e8b1d7cb0} 
+std\+::vector$<$ std\+::tuple$<$ \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}}, double, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRaytracer_1_1IMaterial}{IMaterial}} $>$ $>$ $>$ {\bfseries get\+Primitives} (const char \texorpdfstring{$\ast$}{*}prim\+\_\+type)
+\item 
+\Hypertarget{classRaytracer_1_1Parser_acfc5fff9f2a7e78bd5ee27de12c2c1f7}\label{classRaytracer_1_1Parser_acfc5fff9f2a7e78bd5ee27de12c2c1f7} 
+std\+::vector$<$ std\+::pair$<$ std\+::string, Create\+Primitive\+Func $>$ $>$ {\bfseries load\+Plugins} ()
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a84cad4c9e12fea538342fa5d62bf553e}\label{classRaytracer_1_1Parser_a84cad4c9e12fea538342fa5d62bf553e} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classIPlugin}{IPlugin}} $>$ {\bfseries load\+Plugin} (const char \texorpdfstring{$\ast$}{*}plugin\+\_\+name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a4df740ee331e3490fc1355313548c52e}\label{classRaytracer_1_1Parser_a4df740ee331e3490fc1355313548c52e} 
+std\+::tuple$<$ double, double, double $>$ {\bfseries convert\+RGBTo\+Modal} (double x, double y, double z)
+\item 
+\Hypertarget{classRaytracer_1_1Parser_afd748119aa7c55c43438ca99bb481d7b}\label{classRaytracer_1_1Parser_afd748119aa7c55c43438ca99bb481d7b} 
+std\+::tuple$<$ double, double, double $>$ {\bfseries convert\+To\+Modal} (double x, double y, double z)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_adce63c1781c27718f7d711d78e07935c}\label{classRaytracer_1_1Parser_adce63c1781c27718f7d711d78e07935c} 
+libconfig\+::\+Setting \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+camera}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_aecdde96ad588170d4f323e74eb0153e8}\label{classRaytracer_1_1Parser_aecdde96ad588170d4f323e74eb0153e8} 
+libconfig\+::\+Setting \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+primitives}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a094f3d1c8eeb0983b1529910c1febcdf}\label{classRaytracer_1_1Parser_a094f3d1c8eeb0983b1529910c1febcdf} 
+libconfig\+::\+Setting \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+plugins}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a5c626414b8147d075dc84aba2ed72859}\label{classRaytracer_1_1Parser_a5c626414b8147d075dc84aba2ed72859} 
+libconfig\+::\+Config {\bfseries cfg}
+\item 
+\Hypertarget{classRaytracer_1_1Parser_a00365c64d3fca775ab242b4fbe46db93}\label{classRaytracer_1_1Parser_a00365c64d3fca775ab242b4fbe46db93} 
+\mbox{\hyperlink{classRaytracer_1_1CfgHandler}{Cfg\+Handler}} {\bfseries lib\+Handler}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Parser/Parser.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Parser/Parser.\+cpp\end{DoxyCompactItemize}

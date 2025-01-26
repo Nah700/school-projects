@@ -1,0 +1,44 @@
+\doxysection{Raytracer\+::Lambertian Class Reference}
+\hypertarget{classRaytracer_1_1Lambertian}{}\label{classRaytracer_1_1Lambertian}\index{Raytracer::Lambertian@{Raytracer::Lambertian}}
+Inheritance diagram for Raytracer\+::Lambertian\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classRaytracer_1_1Lambertian}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRaytracer_1_1Lambertian_a844fd90298a8f9ab4c1babe7aead9abb}\label{classRaytracer_1_1Lambertian_a844fd90298a8f9ab4c1babe7aead9abb} 
+{\bfseries Lambertian} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&albedo)
+\item 
+bool \mbox{\hyperlink{classRaytracer_1_1Lambertian_a31031487c22948cc1533f5c062ae5f76}{scatter}} (const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray, const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&ray\+Color, \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&attenuation, \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&ray\+Out) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classRaytracer_1_1AMaterial}{Raytracer\+::\+AMaterial}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_a73ad5e3d42cac6d8e1792a6440693c3b}{get\+Albedo}} () const override
+\item 
+void \mbox{\hyperlink{classRaytracer_1_1AMaterial_abf369e044bd87232eb88e05940315653}{set\+Albedo}} (const \mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&albedo)
+\item 
+\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \mbox{\hyperlink{classRaytracer_1_1AMaterial_ac75a73e2e2de73e6a7456abc96b0479e}{emitted}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRaytracer_1_1Lambertian_a31031487c22948cc1533f5c062ae5f76}\index{Raytracer::Lambertian@{Raytracer::Lambertian}!scatter@{scatter}}
+\index{scatter@{scatter}!Raytracer::Lambertian@{Raytracer::Lambertian}}
+\doxysubsubsection{\texorpdfstring{scatter()}{scatter()}}
+{\footnotesize\ttfamily \label{classRaytracer_1_1Lambertian_a31031487c22948cc1533f5c062ae5f76} 
+bool Raytracer\+::\+Lambertian\+::scatter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray}{, }\item[{const \mbox{\hyperlink{classRaytracer_1_1RayColor}{Raytracer\+::\+Ray\+Color}} \&}]{ray\+Color}{, }\item[{\mbox{\hyperlink{classMath_1_1Point3d}{Math\+::\+Point3d}} \&}]{attenuation}{, }\item[{\mbox{\hyperlink{classRaytracer_1_1Ray}{Raytracer\+::\+Ray}} \&}]{ray\+Out}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classRaytracer_1_1AMaterial}{Raytracer\+::\+AMaterial}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Textures/Materials.\+hpp\item 
+/home/nahimkandari/\+Documents/delivery/\+B-\/\+OOP-\/400-\/\+STG-\/4-\/1-\/raytracer-\/nahim.\+kandari/src/\+Textures/Lambertian.\+cpp\end{DoxyCompactItemize}
