@@ -16,14 +16,14 @@ Advanced C++ projects demonstrated my ability to leverage complex language featu
 This module explored cutting-edge AI techniques, machine learning algorithms, and intelligent system design.
 
 **Projects:**
-- [Gomoku]
+- [Gomoku](https://github.com/Nah700/school-projects/tree/main/3rd-year/AI/gomoku)
 
 ### Computer Numerical Analysis
 Focused on computational methods, numerical algorithms, and mathematical modeling for complex problem-solving.
 
 **Projects:**
-- [Cryptography]
-- [NeuralNetwork]
+- [Cryptography](https://github.com/Nah700/school-projects/tree/main/3rd-year/Cryptography)
+- NeuralNetwork
 
 ### Application Development
 Practical module emphasizing software engineering principles, application architecture, and development best practices.
