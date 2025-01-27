@@ -31,4 +31,4 @@ Throughout these projects, I have worked with various programming languages, fra
 Interested in discussing these projects or potential opportunities? Feel free to reach out via:
 - Email: nahim.kandari@epitech.eu
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/nahim-kandari-999390278/)
-- Personal Website: [Portfolio](https://www.linkedin.com/in/nahim-kandari-999390278/)
+- Personal Website: [Portfolio](https://nah700.github.io/my-portfolio/)
